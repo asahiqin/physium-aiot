@@ -5,3 +5,5 @@
 /dist
 /build
 .husky/
+.DS_store
+.idea
