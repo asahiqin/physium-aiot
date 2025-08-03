@@ -1,0 +1,333 @@
+<template>
+  <div class="index-page">
+    <div class="appBar" style="width: 900px">
+      <img
+        src="/common/back.png"
+        style="object-fit: cover; height: 40px; width: 40px"
+        @click="back"
+      />
+      <text>元素周期表</text>
+      <div></div>
+    </div>
+    <scroll
+      scroll-x="true"
+      scroll-y="true"
+      style="flex-direction: column; width: 900px; height: 550px"
+    >
+      <div class="elements-line">
+        <div for="{{ num_18 }}" tid="uniqueId">
+          <div class="elements-space" style="flex-direction: column">
+            <text class="table-title">{{ $idx }}</text>
+          </div>
+        </div>
+      </div>
+      <!--第一周期-->
+      <div class="elements-line">
+        <input class="elements" type="button" value="H" @click="getElement('1')" />
+        <div for="{{ num_array(16) }}" tid="uniqueId">
+          <div class="elements-space"></div>
+        </div>
+        <input class="elements" type="button" value="He" @click="getElement('2')" />
+      </div>
+      <!--第二周期-->
+      <div class="elements-line">
+        <div for="{{ num_2 }}">
+          <input
+            class="elements"
+            type="button"
+            value="{{ elements_symbol_data[$idx+2] }}"
+            @click="getElement($idx + 3)"
+          />
+        </div>
+        <div for="{{ num_10 }}" tid="uniqueId">
+          <div class="elements-space"></div>
+        </div>
+        <div for="{{ num_6 }}">
+          <input
+            class="elements"
+            type="button"
+            value="{{ elements_symbol_data[$idx+4] }}"
+            @click="getElement($idx + 5)"
+          />
+        </div>
+      </div>
+      <!--第三周期-->
+      <div class="elements-line">
+        <div for="{{ num_2 }}">
+          <input
+            class="elements"
+            type="button"
+            value="{{ elements_symbol_data[$idx+10] }}"
+            @click="getElement($idx + 11)"
+          />
+        </div>
+        <div for="{{ num_10 }}" tid="uniqueId">
+          <div class="elements-space"></div>
+        </div>
+        <div for="{{ num_6 }}">
+          <input
+            class="elements"
+            type="button"
+            value="{{ elements_symbol_data[$idx+12] }}"
+            @click="getElement($idx + 13)"
+          />
+        </div>
+      </div>
+      <!--第四周期-->
+      <div class="elements-line">
+        <div for="{{ num_18 }}">
+          <input
+            class="elements"
+            type="button"
+            value="{{ elements_symbol_data[$idx+18] }}"
+            @click="getElement($idx + 19)"
+          />
+        </div>
+      </div>
+      <!--第五周期-->
+      <div class="elements-line">
+        <div for="{{ num_18 }}">
+          <input
+            class="elements"
+            type="button"
+            value="{{ elements_symbol_data[$idx+36] }}"
+            @click="getElement($idx + 37)"
+          />
+        </div>
+      </div>
+      <!--第六周期-->
+      <div class="elements-line">
+        <div for="{{ num_2 }}">
+          <input
+            class="elements"
+            type="button"
+            value="{{ elements_symbol_data[$idx+54] }}"
+            @click="getElement($idx + 55)"
+          />
+        </div>
+        <input class="elements" type="button" value="镧系" />
+        <div for="{{ num_15 }}">
+          <input
+            class="elements"
+            type="button"
+            value="{{ elements_symbol_data[$idx+71] }}"
+            @click="getElement($idx + 72)"
+          />
+        </div>
+      </div>
+      <!--第七周期-->
+      <div class="elements-line">
+        <div for="{{ num_2 }}">
+          <input
+            class="elements"
+            type="button"
+            value="{{ elements_symbol_data[$idx+86] }}"
+            @click="getElement($idx + 87)"
+          />
+        </div>
+        <input class="elements" type="button" value="锕系" />
+        <div for="{{ num_15 }}">
+          <input
+            class="elements"
+            type="button"
+            value="{{ elements_symbol_data[$idx+103] }}"
+            @click="getElement($idx + 104)"
+          />
+        </div>
+      </div>
+      <!--分割线-->
+      <div class="elements-line divider"></div>
+      <!--镧系-->
+      <div class="elements-line">
+        <div class="elements-space">
+          <text class="title">镧系</text>
+        </div>
+        <div for="{{ num_15 }}">
+          <input
+            class="elements"
+            type="button"
+            value="{{ elements_symbol_data[$idx+56] }}"
+            @click="getElement($idx + 57)"
+          />
+        </div>
+      </div>
+      <!--锕系-->
+      <div class="elements-line">
+        <div class="elements-space">
+          <text class="title">锕系</text>
+        </div>
+        <div for="{{ num_15 }}">
+          <input
+            class="elements"
+            type="button"
+            value="{{ elements_symbol_data[$idx+88] }}"
+            @click="getElement($idx + 89)"
+          />
+        </div>
+      </div>
+    </scroll>
+  </div>
+</template>
+
+<script>
+import router from "@system.router"
+import {getElement} from "../../elements/elements.js"
+import prompt from "@system.prompt"
+import elementsOriginalData from "../../elements/elements.json"
+
+const elementsData = elementsOriginalData.data
+
+console.log("[PHYSIUM]", getElement("10"))
+
+console.log("[PHYSIUM]", elementsData[117].symbol)
+var elements_symbol_data = []
+for (var i = 0; i < 118; i++) {
+  elements_symbol_data.push(elementsData[i].symbol)
+}
+function num_array(count) {
+  return new Array(count).fill(0)
+}
+console.log(Array.of(18).fill(0))
+export default {
+  // 页面级组件的数据模型，影响传入数据的覆盖机制：private内定义的属性不允许被覆盖
+  private: {
+    element: "",
+    elements_symbol_data: elements_symbol_data,
+    num_2: [],
+    num_6: [],
+    num_10: [],
+    num_15: [],
+    num_18: []
+  },
+  onShow() {
+    ;(this.num_2 = num_array(2)),
+      (this.num_6 = num_array(6)),
+      (this.num_10 = num_array(10)),
+      (this.num_15 = num_array(15)),
+      (this.num_18 = num_array(18))
+  },
+  routeDetail() {
+    // 跳转到应用内的某个页面，router用法详见：文档->接口->页面路由
+    router.push({
+      uri: "/pages/detail"
+    })
+  },
+  num_array(count) {
+    return new Array(count).fill(0)
+  },
+  getElement(element) {
+    console.log(element)
+    router.push({
+      uri: "/pages/detail",
+      params: {
+        element: elements_symbol_data[element - 1],
+        index: element
+      }
+    })
+  },
+  back() {
+    router.back()
+  }
+}
+</script>
+
+<style>
+.back-button {
+  left: 8px;
+  font-size: 20px; /* Adjust as needed, 16px by default */
+  color: #e6e0e9; /* Text color from Material You palette */
+  text-decoration: none; /* Remove underline from link */
+
+  /* Spacing and Shape */
+  padding: 5px 5px 5px 5px; /* Standard Material You text button padding */
+  border-radius: 3px; /* Fully rounded corners for a pill shape, characteristic of Material You */
+
+  /* Interaction (Subtle) */
+  background-color: transparent; /* No default background for a text button */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Smooth transition for hover/focus */
+}
+.appBar {
+  display: flex;
+  align-items: center; /* 垂直居中对齐子项 */
+  justify-content: space-between; /* 标题靠左，操作靠右 */
+  width: 100%;
+
+  height: 64px; /* 标准应用栏高度 */
+  padding: 16px 16px 16px 16px; /* 左右内边距 */
+
+  /* Material You 风格 */
+  background-color: #d0bcff; /* 背景色使用主色 */
+  color: #381e72; /* 文本和图标颜色 */
+  border-bottom-left-radius: 0px; /* 对于顶部栏，通常是直角 */
+  border-bottom-right-radius: 0px; /* 如果需要柔和边缘，可设置为例如 16px */
+
+  /* 确保应用栏在内容之上 */
+  position: relative; /* 或 'fixed'/'sticky' 取决于你的布局需求 */
+}
+.index-page {
+  flex-direction: column;
+  background-color: #141218;
+}
+.elements-line {
+  flex-direction: row;
+}
+#text {
+  color: #381e72;
+}
+
+.title {
+  font-size: 20px;
+  text-align: center;
+  color: #e6e0e9;
+}
+
+.btn {
+  width: 200px;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: #09ba07;
+  font-size: 20px;
+  color: #ffffff;
+}
+.elements {
+  width: 46px;
+  height: 46px;
+  background-color: #d0bcff;
+  /* 使用较大的圆角，符合Material You的柔和曲线 */
+  border-radius: 12px; /* 示例圆角，可以根据喜好调整 */
+  display: flex; /* 使用Flexbox进行内容居中 */
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  border: none; /* 移除默认边框 */
+  cursor: pointer; /* 鼠标悬停时显示手型光标 */
+  font-size: 14px; /* 字体大小，根据按钮尺寸调整以确保可读性 */
+  color: #381e72; /* 文字颜色 */
+  text-align: center; /* 确保文本本身居中，尽管flexbox已处理 */
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.table-title {
+  align-items: center;
+  color: #d0bcff;
+
+  font-size: 14px; /* 字体大小，根据按钮尺寸调整以确保可读性 */
+}
+.elements-space {
+  width: 50px;
+  height: 50px;
+  display: flex; /* 使用Flexbox进行内容居中 */
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+}
+.divider {
+  width: 100%; /* 占据父容器的全部宽度 */
+  height: 1px; /* 分割线的粗细 */
+  background-color: #49454f; /* 使用主题中的分割线颜色 */
+  border: none; /* 移除可能的默认边框 */
+  margin: 8px 0; /* 上下外边距，用于与内容分隔，可以根据需要调整 */
+  opacity: 0.6; /* 增加透明度使其更柔和 */
+}
+</style>

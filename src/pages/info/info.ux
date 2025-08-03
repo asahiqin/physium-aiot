@@ -1,0 +1,145 @@
+<template>
+  <div class="info-page">
+    <div class="appBar" style="">
+      <img
+        src="/common/back.png"
+        style="object-fit: cover; height: 40px; width: 40px"
+        @click="back"
+      />
+      <text>更多信息</text>
+      <div></div>
+    </div>
+    <div style="width: 100%; height: 10px"></div>
+    <div class="card">
+      <text class="card__title">开发者:AsahiQin</text>
+      <text class="card__title"></text>
+      <text class="card__title">该项目基于GPL v2.0开源</text>
+    </div>
+    <div class="divider"></div>
+    <text class="title">该项目数据部分来源于Casio的Physium</text>
+    <div class="divider"></div>
+    <div style="width: 100%; height: 20px"></div>
+    <text class="title">用到的开源项目：</text>
+    <div style="width: 100%; height: 20px"></div>
+    <div class="divider"></div>
+    <div class="card">
+      <text class="card__title">输入控件</text>
+      <text class="card__title">NEORUAA/Vela_input_method</text>
+      <text class="card__title">MIT License</text>
+    </div>
+    <div class="card">
+      <text class="card__title">元素周期表部分逻辑</text>
+      <text class="card__title">shangzhenyang/periodic-table</text>
+      <text class="card__title">MIT License</text>
+    </div>
+    <div class="divider"></div>
+    <text class="title" @click="gotoGPL">查看GPL v2.0 英文副本</text>
+    <div style="width: 100%; height: 40px"></div>
+  </div>
+</template>
+
+<script>
+import router from "@system.router"
+import {getElement} from "../../elements/elements.js"
+
+export default {
+  private: {},
+  back() {
+    router.back()
+  },
+  gotoGPL() {
+    router.push({
+      uri: "pages/gpl"
+    })
+  }
+}
+</script>
+
+<style>
+.info-page {
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #141218;
+}
+
+.title {
+  font-size: 25px;
+  text-align: center;
+  color: #e6e0e9;
+}
+.appBar {
+  display: flex;
+  align-items: center; /* 垂直居中对齐子项 */
+  justify-content: space-between; /* 标题靠左，操作靠右 */
+  width: 100%;
+
+  height: 64px; /* 标准应用栏高度 */
+  padding: 16px 16px 16px 16px; /* 左右内边距 */
+
+  /* Material You 风格 */
+  background-color: #d0bcff; /* 背景色使用主色 */
+  color: #381e72; /* 文本和图标颜色 */
+  border-bottom-left-radius: 0px; /* 对于顶部栏，通常是直角 */
+  border-bottom-right-radius: 0px; /* 如果需要柔和边缘，可设置为例如 16px */
+
+  /* 确保应用栏在内容之上 */
+  position: relative; /* 或 'fixed'/'sticky' 取决于你的布局需求 */
+}
+.back-button {
+  /* Positioning */
+  position: absolute; /* Fixes the button relative to the viewport */
+  top: 16px; /* 16px from the top edge */
+  left: 16px; /* 16px from the left edge */
+  z-index: 1000; /* Ensures it stays on top of other content */
+
+  font-size: 20px; /* Adjust as needed, 16px by default */
+  color: #e6e0e9; /* Text color from Material You palette */
+  text-decoration: none; /* Remove underline from link */
+
+  /* Spacing and Shape */
+  padding: 5px 5px; /* Standard Material You text button padding */
+  border-radius: 3px; /* Fully rounded corners for a pill shape, characteristic of Material You */
+
+  /* Interaction (Subtle) */
+  background-color: transparent; /* No default background for a text button */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Smooth transition for hover/focus */
+}
+.card {
+  /* 基础布局和尺寸 (示例) */
+  width: 320px; /* 卡片宽度，根据内容和布局调整 */
+  min-height: 120px; /* 最小高度 */
+  padding: 16px; /* 内边距 */
+  display: flex;
+  flex-direction: column; /* 内容垂直堆叠 */
+  gap: 12px; /* 内部元素间距 */
+  margin: 10px 10px 10px 10px;
+  /* Material You 风格 */
+  background-color: #1d1b20; /* 卡片背景色 */
+  border-radius: 16px; /* 较大的圆角，符合 Material You 的柔和美学 */
+  border: 1px solid transparent; /* 默认无边框，但可用于焦点/选中状态 */
+
+  /* 阴影/高程 */
+  box-shadow: 0px 2px 4px -1px #000000, 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+
+  /* 字体和颜色 */
+  color: #e6e0e9; /* 默认文本颜色 */
+
+  /* 过渡效果 */
+  transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.card__title {
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #e6e0e9;
+}
+.divider {
+  width: 100%; /* 占据父容器的全部宽度 */
+  height: 1px; /* 分割线的粗细 */
+  background-color: #49454f; /* 使用主题中的分割线颜色 */
+  border: none; /* 移除可能的默认边框 */
+  margin: 8px 0; /* 上下外边距，用于与内容分隔，可以根据需要调整 */
+  opacity: 0.6; /* 增加透明度使其更柔和 */
+}
+</style>
