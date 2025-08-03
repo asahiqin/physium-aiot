@@ -9,10 +9,12 @@
       <text>元素周期表</text>
       <div></div>
     </div>
+    <text if="{{num_2.length == 0}}" class="title" style="font-size: 25px;margin-top: 10px">正在渲染中,请耐心等待</text>
     <scroll
       scroll-x="true"
       scroll-y="true"
       style="flex-direction: column; width: 900px; height: 550px"
+      else
     >
       <div class="elements-line">
         <div for="{{ num_18 }}" tid="uniqueId">
@@ -23,11 +25,11 @@
       </div>
       <!--第一周期-->
       <div class="elements-line">
-        <input class="elements" type="button" value="H" @click="getElement('1')" />
+        <input if="{{num_2 != []}}" class="elements" type="button" value="H" @click="getElement('1')" />
         <div for="{{ num_array(16) }}" tid="uniqueId">
           <div class="elements-space"></div>
         </div>
-        <input class="elements" type="button" value="He" @click="getElement('2')" />
+        <input if="{{num_2 != []}}" class="elements" type="button" value="He" @click="getElement('2')" />
       </div>
       <!--第二周期-->
       <div class="elements-line">
@@ -187,7 +189,6 @@ for (var i = 0; i < 118; i++) {
 function num_array(count) {
   return new Array(count).fill(0)
 }
-console.log(Array.of(18).fill(0))
 export default {
   // 页面级组件的数据模型，影响传入数据的覆盖机制：private内定义的属性不允许被覆盖
   private: {
@@ -200,11 +201,15 @@ export default {
     num_18: []
   },
   onShow() {
-    ;(this.num_2 = num_array(2)),
-      (this.num_6 = num_array(6)),
-      (this.num_10 = num_array(10)),
-      (this.num_15 = num_array(15)),
-      (this.num_18 = num_array(18))
+    console.log(this.num_2)
+    if (this.num_2.length == 0 ){
+      this.num_2 = num_array(2)
+      this.num_6 = num_array(6)
+      this.num_10 = num_array(10)
+      this.num_15 = num_array(15)
+      this.num_18 = num_array(18)
+      console.log(this.num_2)
+    }
   },
   routeDetail() {
     // 跳转到应用内的某个页面，router用法详见：文档->接口->页面路由

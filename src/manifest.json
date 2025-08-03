@@ -1,7 +1,7 @@
 {
   "package": "io.github.asahiqin.physium",
   "name": "physium",
-  "versionName": "alpha 0.1.0",
+  "versionName": "alpha0.1.0",
   "versionCode": 1,
   "minPlatformVersion": 1000,
   "icon": "/common/logo.png",

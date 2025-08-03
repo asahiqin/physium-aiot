@@ -3,6 +3,8 @@
  *
  * @author Shangzhen Yang
  * https://github.com/shangzhenyang/periodic-table
+ * 
+ * 注:作者AsahiQin更改了部分代码,使其适配vela的js解释器
  */
 
 import elementsOriginalData from "./elements.json";

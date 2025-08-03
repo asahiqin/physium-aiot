@@ -1,3 +1,6 @@
+<!--
+注: 作者(AsahiQin)更改了部分代码,取消了中文输入
+-->
 <template>
   <div class="page" style="flex-direction: column;" show="{{!hide}}">
     <div style="background-color:black" >
