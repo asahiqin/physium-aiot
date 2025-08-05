@@ -1,0 +1,402 @@
+{
+    "universal": [
+        {
+            "symbol": "c",
+            "latex": "universal/c.png",
+            "describe": "真空中的光速",
+            "value": "299792458",
+            "unit": "ms^{-1}",
+            "unit_latex": "universal/ms^{-1}.png",
+            "calc": "",
+            "calc_latex": "universal/.png"
+        },
+        {
+            "symbol": "mu_0",
+            "latex": "universal/mu_0.png",
+            "describe": "磁常数",
+            "value": "1.2566370614E –6",
+            "unit": "NA^{-2}",
+            "unit_latex": "universal/NA^{-2}.png",
+            "calc": "4\\pi*10^{-1}",
+            "calc_latex": "universal/4pi10^{-1}.png"
+        },
+        {
+            "symbol": "varepsilon_0",
+            "latex": "universal/varepsilon_0.png",
+            "describe": "电常数",
+            "value": "8.854187817E –12",
+            "unit": "Fm^{-1}",
+            "unit_latex": "universal/Fm^{-1}.png",
+            "calc": "\\frac{1}{\\mu_0c^2}",
+            "calc_latex": "universal/frac{1}{mu_0c^2}.png"
+        },
+        {
+            "symbol": "Z_0",
+            "latex": "universal/Z_0.png",
+            "describe": "真空的特性阻抗",
+            "value": "376.730313461",
+            "unit": "\\Omega",
+            "unit_latex": "universal/Omega.png",
+            "calc": "\\sqrt{\\mu_0/\\varepsilon_0}=\\mu_0c",
+            "calc_latex": "universal/sqrt{mu_0varepsilon_0}=mu_0c.png"
+        },
+        {
+            "symbol": "G",
+            "latex": "universal/G.png",
+            "describe": "万有引力常数",
+            "value": "6.67408E–11",
+            "unit": "m^3kg^{-1}s^{-2}",
+            "unit_latex": "universal/m^3kg^{-1}s^{-2}.png",
+            "calc": "",
+            "calc_latex": "universal/.png"
+        },
+        {
+            "symbol": "h",
+            "latex": "universal/h.png",
+            "describe": "普朗克常数",
+            "value": "6.626070040E–34",
+            "unit": "Js",
+            "unit_latex": "universal/Js.png",
+            "calc": "",
+            "calc_latex": "universal/.png"
+        },
+        {
+            "symbol": "hbar",
+            "latex": "universal/hbar.png",
+            "describe": "约化普朗克常数",
+            "value": "1.054571800E–34",
+            "unit": "Js",
+            "unit_latex": "universal/Js.png",
+            "calc": "h/2\\pi",
+            "calc_latex": "universal/h2pi.png"
+        },
+        {
+            "symbol": "m_p",
+            "latex": "universal/m_p.png",
+            "describe": "普朗克质量",
+            "value": "2.176470E–8",
+            "unit": "kg",
+            "unit_latex": "universal/kg.png",
+            "calc": "(\\hbar c/G)^{1/2}",
+            "calc_latex": "universal/(hbarcG)^{12}.png"
+        },
+        {
+            "symbol": "l_p",
+            "latex": "universal/l_p.png",
+            "describe": "普朗克长度",
+            "value": "1.616229E–35",
+            "unit": "m",
+            "unit_latex": "universal/m.png",
+            "calc": "\\hbar/m_pc=(\\hbar*G/c^3)^{1/2}",
+            "calc_latex": "universal/hbarm_pc=(hbarGc^3)^{12}.png"
+        },
+        {
+            "symbol": "t_p",
+            "latex": "universal/t_p.png",
+            "describe": "普朗克时间",
+            "value": "5.39116E–44",
+            "unit": "s",
+            "unit_latex": "universal/s.png",
+            "calc": "l_p/c=(\\hbar*G/c^5)^{1/2}",
+            "calc_latex": "universal/l_pc=(hbarGc^5)^{12}.png"
+        }
+    ],
+    "electromagnetic": [
+        {
+            "symbol": "e",
+            "latex": "universal/e.png",
+            "describe": "基本电荷",
+            "value": "1.6021766208E–19",
+            "unit": "C",
+            "unit_latex": "universal/C.png",
+            "calc": "",
+            "calc_latex": "universal/.png"
+        },
+        {
+            "symbol": "phi_0",
+            "latex": "electromagnetic/phi_0.png",
+            "describe": "磁通量子",
+            "value": "2.067833831E–15",
+            "unit": "Wb",
+            "unit_latex": "electromagnetic/Wb.png",
+            "calc": "\\frac{h}{2e}",
+            "calc_latex": "electromagnetic/frac{h}{2e}.png"
+        },
+        {
+            "symbol": "G_0",
+            "latex": "electromagnetic/G_0.png",
+            "describe": "电导量子",
+            "value": "7.7480917310E–5",
+            "unit": "S",
+            "unit_latex": "electromagnetic/S.png",
+            "calc": "\\frac{2e^2}{h}",
+            "calc_latex": "electromagnetic/frac{2e^2}{h}.png"
+        },
+        {
+            "symbol": "K_J",
+            "latex": "electromagnetic/K_J.png",
+            "describe": "约瑟夫逊常数",
+            "value": "483597.8525E9",
+            "unit": "HzV^{-1}",
+            "unit_latex": "electromagnetic/HzV^{-1}.png",
+            "calc": "{2e}/h",
+            "calc_latex": "electromagnetic/{2e}h.png"
+        },
+        {
+            "symbol": "R_K",
+            "latex": "electromagnetic/R_K.png",
+            "describe": "克里青常数",
+            "value": "25812.8074555",
+            "unit": "\\Omega",
+            "unit_latex": "electromagnetic/Omega.png",
+            "calc": "h/e^2=\\mu_0/{2\\alpha}",
+            "calc_latex": "electromagnetic/he^2=mu_0{2alpha}.png"
+        },
+        {
+            "symbol": "mu_B",
+            "latex": "electromagnetic/mu_B.png",
+            "describe": "玻尔磁子",
+            "value": "927.4009994E–26",
+            "unit": "JT^{-1}",
+            "unit_latex": "electromagnetic/JT^{-1}.png",
+            "calc": "e\\hbar/{2m_e}",
+            "calc_latex": "electromagnetic/ehbar{2m_e}.png"
+        },
+        {
+            "symbol": "mu_N",
+            "latex": "electromagnetic/mu_N.png",
+            "describe": "核磁子",
+            "value": "5.050783699E–27",
+            "unit": "JT^{-1}",
+            "unit_latex": "electromagnetic/JT^{-1}.png",
+            "calc": "e\\hbar/{2m_p}",
+            "calc_latex": "electromagnetic/ehbar{2m_p}.png"
+        }
+    ],
+    "atomic_nuclear": [
+        {
+            "symbol": "alpha",
+            "latex": "atomic_nuclear/alpha.png",
+            "describe": "精细结构常数",
+            "value": "7.2973525664E–3",
+            "unit": "",
+            "unit_latex": "atomic_nuclear/.png",
+            "calc": "\\frac{e^2}{4\\pi*\\varepsilon_0*\\hbar*c}",
+            "calc_latex": "atomic_nuclear/frac{e^2}{4pivarepsilon_0hbarc}.png"
+        },
+        {
+            "symbol": "R_infty",
+            "latex": "atomic_nuclear/R_infty.png",
+            "describe": "里德伯常数",
+            "value": "10973731.568508",
+            "unit": "m^{-1}",
+            "unit_latex": "atomic_nuclear/m^{-1}.png",
+            "calc": "\\alpha^2m_ec/2h",
+            "calc_latex": "atomic_nuclear/alpha^2m_ec2h.png"
+        },
+        {
+            "symbol": "a_0",
+            "latex": "atomic_nuclear/a_0.png",
+            "describe": "玻尔半径",
+            "value": "0.52917721067E–10",
+            "unit": "m",
+            "unit_latex": "atomic_nuclear/m.png",
+            "calc": "\\alpha/{4\\pi*R_\\infty}",
+            "calc_latex": "atomic_nuclear/alpha{4piR_infty}.png"
+        },
+        {
+            "symbol": "m_e",
+            "latex": "atomic_nuclear/m_e.png",
+            "describe": "电子质量",
+            "value": "9.10938356E–31",
+            "unit": "kg",
+            "unit_latex": "atomic_nuclear/kg.png",
+            "calc": "",
+            "calc_latex": "atomic_nuclear/.png"
+        },
+        {
+            "symbol": "mu_e",
+            "latex": "atomic_nuclear/mu_e.png",
+            "describe": "电子磁矩",
+            "value": "–928.4764620E–26",
+            "unit": "JT^{-1}",
+            "unit_latex": "atomic_nuclear/JT^{-1}.png",
+            "calc": "",
+            "calc_latex": "atomic_nuclear/.png"
+        },
+        {
+            "symbol": "m_mu",
+            "latex": "atomic_nuclear/m_mu.png",
+            "describe": "muon质量",
+            "value": "1.883531594E–28",
+            "unit": "kg",
+            "unit_latex": "atomic_nuclear/kg.png",
+            "calc": "",
+            "calc_latex": "atomic_nuclear/.png"
+        },
+        {
+            "symbol": "mu_mu",
+            "latex": "atomic_nuclear/mu_mu.png",
+            "describe": "muon磁矩",
+            "value": "–4.49044826E–26",
+            "unit": "jT^{-1}",
+            "unit_latex": "atomic_nuclear/JT^{-1}.png",
+            "calc": "",
+            "calc_latex": "atomic_nuclear/.png"
+        },
+        {
+            "symbol": "m_tau",
+            "latex": "atomic_nuclear/m_tau.png",
+            "describe": "tau质量",
+            "value": "3.16747E –27",
+            "unit": "kg",
+            "unit_latex": "atomic_nuclear/kg.png",
+            "calc": "",
+            "calc_latex": "atomic_nuclear/.png"
+        },
+        {
+            "symbol": "m_p",
+            "latex": "atomic_nuclear/m_p.png",
+            "describe": "质子质量",
+            "value": "1.672621898E–27",
+            "unit": "kg",
+            "unit_latex": "atomic_nuclear/kg.png",
+            "calc": "",
+            "calc_latex": "atomic_nuclear/.png"
+        },
+        {
+            "symbol": "mu_p",
+            "latex": "atomic_nuclear/mu_p.png",
+            "describe": "质子磁矩",
+            "value": "1.4106067873E–26",
+            "unit": "JT^{-1}",
+            "unit_latex": "atomic_nuclear/JT^{-1}.png",
+            "calc": "",
+            "calc_latex": "atomic_nuclear/.png"
+        },
+        {
+            "symbol": "m_n",
+            "latex": "atomic_nuclear/m_n.png",
+            "describe": "中子质量",
+            "value": "1.674927471E–27",
+            "unit": "kg",
+            "unit_latex": "atomic_nuclear/kg.png",
+            "calc": "",
+            "calc_latex": "atomic_nuclear/.png"
+        },
+        {
+            "symbol": "mu_n",
+            "latex": "atomic_nuclear/mu_n.png",
+            "describe": "中子磁矩",
+            "value": "–0.96623650E–26",
+            "unit": "JT^{-1}",
+            "unit_latex": "atomic_nuclear/JT^{-1}.png",
+            "calc": "",
+            "calc_latex": "atomic_nuclear/.png"
+        }
+    ],
+    "physico_chemical": [
+        {
+            "symbol": "N_A",
+            "latex": "physico_chemical/N_A.png",
+            "describe": "阿伏伽德罗常数",
+            "value": "6.022140857E23",
+            "unit": "mol^{-1}",
+            "unit_latex": "physico_chemical/mol^{-1}.png",
+            "calc": "",
+            "calc_latex": "physico_chemical/.png"
+        },
+        {
+            "symbol": "m_u",
+            "latex": "physico_chemical/m_u.png",
+            "describe": "原子质量常数",
+            "value": "1.660539040E–27",
+            "unit": "kg",
+            "unit_latex": "physico_chemical/kg.png",
+            "calc": "",
+            "calc_latex": "physico_chemical/.png"
+        },
+        {
+            "symbol": "F",
+            "latex": "physico_chemical/F.png",
+            "describe": "法拉第常数",
+            "value": "96485.33289",
+            "unit": "Cmol^{-1}",
+            "unit_latex": "physico_chemical/Cmol^{-1}.png",
+            "calc": "",
+            "calc_latex": "physico_chemical/.png"
+        },
+        {
+            "symbol": "R",
+            "latex": "physico_chemical/R.png",
+            "describe": "摩尔气体常数",
+            "value": "8.3144598",
+            "unit": "Jmol^{-1}K^{-1}",
+            "unit_latex": "physico_chemical/Jmol^{-1}K^{-1}.png",
+            "calc": "",
+            "calc_latex": "physico_chemical/.png"
+        },
+        {
+            "symbol": "k",
+            "latex": "physico_chemical/k.png",
+            "describe": "玻尔兹曼常数",
+            "value": "1.38064852E–23",
+            "unit": "JK^{-1}",
+            "unit_latex": "physico_chemical/JK^{-1}.png",
+            "calc": "R/{N_A}",
+            "calc_latex": "physico_chemical/R{N_A}.png"
+        },
+        {
+            "symbol": "V_m",
+            "latex": "physico_chemical/V_m.png",
+            "describe": "理想气体的摩尔体积 (273.15K, 100kPa)",
+            "value": "22.710947E–3",
+            "unit": "m^3mol^{-1}",
+            "unit_latex": "physico_chemical/m^3mol^{-1}.png",
+            "calc": "RT/p(p=100kPa)",
+            "calc_latex": "physico_chemical/RTp(p=100kPa).png"
+        },
+        {
+            "symbol": "sigma",
+            "latex": "physico_chemical/sigma.png",
+            "describe": "斯蒂芬-玻尔兹曼常数",
+            "value": "5.670367E–8",
+            "unit": "Wm^{-2}K^{-4}",
+            "unit_latex": "physico_chemical/Wm^{-2}K^{-4}.png",
+            "calc": "\\frac{(pi^2/60)k^4}{\\hbar^3c^2}",
+            "calc_latex": "physico_chemical/frac{(pi^260)k^4}{hbar^3c^2}.png"
+        }
+    ],
+    "adopted": [
+        {
+            "symbol": "K_{J-90}",
+            "latex": "adopted/K_{J-90}.png",
+            "describe": "约瑟夫逊常数的约定值",
+            "value": "483597.9",
+            "unit": "GHzV^{-1}",
+            "unit_latex": "adopted/GHzV^{-1}.png",
+            "calc": "",
+            "calc_latex": "adopted/.png"
+        },
+        {
+            "symbol": "R_{K-90}",
+            "latex": "adopted/R_{K-90}.png",
+            "describe": "克里青常数的约定值",
+            "value": "25812.807",
+            "unit": "\\Omega",
+            "unit_latex": "adopted/Omega.png",
+            "calc": "",
+            "calc_latex": "adopted/.png"
+        },
+        {
+            "symbol": "g_n",
+            "latex": "adopted/g_n.png",
+            "describe": "重力加速度",
+            "value": "9.80665",
+            "unit": "ms^{-2}",
+            "unit_latex": "adopted/ms^{-2}.png",
+            "calc": "",
+            "calc_latex": "adopted/.png"
+        }
+    ]
+}

@@ -7,3 +7,4 @@
 .husky/
 .DS_store
 .idea
+.venv

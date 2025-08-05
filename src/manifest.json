@@ -1,7 +1,7 @@
 {
   "package": "io.github.asahiqin.physium",
   "name": "physium",
-  "versionName": "alpha0.1.0",
+  "versionName": "v0.2.0-alpha",
   "versionCode": 1,
   "minPlatformVersion": 1000,
   "icon": "/common/logo.png",
@@ -27,10 +27,10 @@
   "router": {
     "entry": "pages/home",
     "pages": {
-      "pages/index": {
+      "pages/chemistry/index": {
         "component": "index"
       },
-      "pages/detail": {
+      "pages/chemistry/detail": {
         "component": "detail"
       },
       "pages/home": {
@@ -42,8 +42,17 @@
       "pages/gpl": {
         "component": "gpl"
       },
-      "pages/get_compound": {
+      "pages/chemistry/get_compound": {
         "component": "get_compound"
+      },
+      "pages/physics/index": {
+        "component": "index"
+      },
+      "pages/physics/detail": {
+        "component": "detail"
+      },
+      "pages/physics/submenu": {
+        "component": "submenu"
       }
     }
   }

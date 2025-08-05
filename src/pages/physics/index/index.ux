@@ -1,62 +1,65 @@
 <template>
-  <div class="info-page">
+  <div class="page">
     <div class="appBar" style="">
       <img
         src="/common/back.png"
         style="object-fit: cover; height: 40px; width: 40px"
         @click="back"
       />
-      <text>更多信息</text>
+      <text>物理常数表</text>
       <div></div>
     </div>
-    <div style="width: 100%; height: 10px"></div>
-    <div class="card">
-      <text class="card__title">开发者:AsahiQin</text>
-      <text class="card__title">版本v0.2.0-alpha</text>
-      <text class="card__title">该项目基于GPL v2.0开源</text>
+    <div for="{{ type }}" class="card"  @click="gotoSubmenu($item.code, $item.chs)">
+      <text class="title">{{ $item.chs }}</text>
     </div>
-    <div class="divider"></div>
-    <text class="title">该项目数据部分来源于Casio的Physium</text>
-    <div class="divider"></div>
-    <div style="width: 100%; height: 20px"></div>
-    <text class="title">用到的开源项目：</text>
-    <div style="width: 100%; height: 20px"></div>
-    <div class="divider"></div>
-    <div class="card">
-      <text class="card__title">输入控件</text>
-      <text class="card__title">NEORUAA/Vela_input_method</text>
-      <text class="card__title">MIT License</text>
-    </div>
-    <div class="card">
-      <text class="card__title">元素周期表部分逻辑</text>
-      <text class="card__title">shangzhenyang/periodic-table</text>
-      <text class="card__title">MIT License</text>
-    </div>
-    <div class="divider"></div>
-    <text class="title" @click="gotoGPL">查看GPL v2.0 英文副本</text>
-    <div style="width: 100%; height: 40px"></div>
   </div>
 </template>
 
 <script>
 import router from "@system.router"
-import {getElement} from "../../elements/elements.js"
 
 export default {
-  private: {},
+  private: {
+    type: [{
+        chs: "普适",
+        code: "universal"
+    }, 
+    {
+      code: "electromagnetic",
+      chs: "电磁"
+    },
+    {
+        chs:"原子与核",
+        code: "atomic_nuclear"
+    },
+    {
+      code: "physico_chemical",
+      chs: "物理化学"
+    },
+    {
+      code: "adopted",
+      chs: "采用值"
+    }
+  ]
+  },
   back() {
     router.back()
   },
-  gotoGPL() {
+  gotoSubmenu(type, chs) {
+    console.log(type)
     router.push({
-      uri: "pages/gpl"
+        uri: "pages/physics/submenu",
+        params: {
+            code: type,
+            title: chs
+        }
     })
   }
 }
 </script>
 
 <style>
-.info-page {
+.page {
   flex-direction: column;
   align-items: flex-start;
   background-color: #141218;
@@ -90,7 +93,6 @@ export default {
   position: absolute; /* Fixes the button relative to the viewport */
   top: 16px; /* 16px from the top edge */
   left: 16px; /* 16px from the left edge */
-  z-index: 1000; /* Ensures it stays on top of other content */
 
   font-size: 20px; /* Adjust as needed, 16px by default */
   color: #e6e0e9; /* Text color from Material You palette */
@@ -107,11 +109,12 @@ export default {
 .card {
   /* 基础布局和尺寸 (示例) */
   width: 320px; /* 卡片宽度，根据内容和布局调整 */
-  min-height: 120px; /* 最小高度 */
+  min-height: 80px; /* 最小高度 */
   padding: 16px; /* 内边距 */
   display: flex;
-  flex-direction: column; /* 内容垂直堆叠 */
-  gap: 12px; /* 内部元素间距 */
+  flex-direction: row; /* 内容垂直堆叠 */
+  justify-items: center;
+  align-content: center;
   margin: 10px 10px 10px 10px;
   /* Material You 风格 */
   background-color: #1d1b20; /* 卡片背景色 */

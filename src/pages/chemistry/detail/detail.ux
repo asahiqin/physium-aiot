@@ -22,7 +22,7 @@
 
 <script>
 import router from '@system.router' 
-import { getElement } from "../../elements/elements.js"
+import { getElement } from "../../../elements/elements.js"
 
 export default {
   private: {

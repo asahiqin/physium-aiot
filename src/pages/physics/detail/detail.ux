@@ -1,62 +1,75 @@
 <template>
-  <div class="info-page">
+  <div class="page">
     <div class="appBar" style="">
       <img
         src="/common/back.png"
         style="object-fit: cover; height: 40px; width: 40px"
         @click="back"
       />
-      <text>更多信息</text>
+      <text>信息</text>
       <div></div>
     </div>
-    <div style="width: 100%; height: 10px"></div>
-    <div class="card">
-      <text class="card__title">开发者:AsahiQin</text>
-      <text class="card__title">版本v0.2.0-alpha</text>
-      <text class="card__title">该项目基于GPL v2.0开源</text>
+    <div class="notice">
+      <text class="title">{{ describe }}</text>
+      <img class="latex" src="../../../physics/assests/{{ latex }}" />
     </div>
-    <div class="divider"></div>
-    <text class="title">该项目数据部分来源于Casio的Physium</text>
-    <div class="divider"></div>
-    <div style="width: 100%; height: 20px"></div>
-    <text class="title">用到的开源项目：</text>
-    <div style="width: 100%; height: 20px"></div>
-    <div class="divider"></div>
-    <div class="card">
-      <text class="card__title">输入控件</text>
-      <text class="card__title">NEORUAA/Vela_input_method</text>
-      <text class="card__title">MIT License</text>
+    <div class="notice">
+        <text class="title">值</text>
+        <text class="title">{{value}}</text>
     </div>
-    <div class="card">
-      <text class="card__title">元素周期表部分逻辑</text>
-      <text class="card__title">shangzhenyang/periodic-table</text>
-      <text class="card__title">MIT License</text>
+    <div class="notice">
+        <text class="title">单位</text>
+        <img src="../../../physics/assests/{{unit}}" class="latex" />
     </div>
-    <div class="divider"></div>
-    <text class="title" @click="gotoGPL">查看GPL v2.0 英文副本</text>
-    <div style="width: 100%; height: 40px"></div>
+    <div class="notice" if="{{calc != ''}}">
+        <text class="title">计算</text>
+        <img src="../../../physics/assests/{{calc}}" class="latex" />
+    </div>
+
   </div>
 </template>
 
 <script>
 import router from "@system.router"
-import {getElement} from "../../elements/elements.js"
-
+function find(symbol, constant) {
+  for (var i = 0; i < constant.length; i++) {
+    if (constant[i].symbol == symbol) {
+      console.log(constant[i])
+      return constant[i]
+    }
+  }
+}
 export default {
-  private: {},
+  private: {
+    describe: "",
+    calc: "",
+    unit: "",
+    value: "",
+    latex: ""
+  },
+  protected: {
+    symbol: "",
+    constant: []
+  },
+  onShow() {
+    console.log(this.constant)
+    this.constant = JSON.parse(this.constant)
+    var content = find(this.symbol, this.constant)
+    this.describe = content.describe
+    ;(this.unit = content.unit_latex), (this.value = content.value)
+    this.latex = content.latex
+    if(content.calc != ""){
+        this.calc = content.calc_latex
+    }
+  },
   back() {
     router.back()
-  },
-  gotoGPL() {
-    router.push({
-      uri: "pages/gpl"
-    })
   }
 }
 </script>
 
 <style>
-.info-page {
+.page {
   flex-direction: column;
   align-items: flex-start;
   background-color: #141218;
@@ -141,5 +154,15 @@ export default {
   border: none; /* 移除可能的默认边框 */
   margin: 8px 0; /* 上下外边距，用于与内容分隔，可以根据需要调整 */
   opacity: 0.6; /* 增加透明度使其更柔和 */
+}
+.notice {
+  width: 320px;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 10px 10px 10px 10px;
+}
+.latex {
+  object-fit: cover;
 }
 </style>

@@ -13,7 +13,14 @@
       </div>
     </div>
     <div style="width: 100%; height: 10px"></div>
-
+    <div class="card">
+      <text class="card__title">物理常数表</text>
+      <text class="card__title"></text>
+      <div class="card__actions">
+        <input type="button" class="button" value="进入" @click="gotoPhysics" />
+      </div>
+    </div>
+    <div style="width: 100%; height: 10px"></div>
     <div class="card">
       <text class="card__title">计算相对分子质量</text>
       <text class="card__title"></text>
@@ -47,7 +54,7 @@ export default {
     if (this.elements_button) {
       this.elements_button = false
       router.push({
-        uri: "pages/index"
+        uri: "pages/chemistry/index"
       })
     }
   },
@@ -56,9 +63,14 @@ export default {
       uri: "pages/info"
     })
   },
+  gotoPhysics(){
+    router.push({
+      uri: "pages/physics/index"
+    })
+  },
   gotoGetCompound() {
     router.push({
-      uri: "pages/get_compound"
+      uri: "pages/chemistry/get_compound"
     })
   }
 }
