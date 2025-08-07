@@ -7,7 +7,7 @@
   <p align="center">
     一个适用于Vela的化学与物理小工具	
     <br />
-    <a href="https://github.com/asahiqin/physium-aiot/releases/tag/v0.2.0-alpha"><strong>下载测试版（v0.2.0-alpha）</strong></a>
+    <a href="https://github.com/asahiqin/physium-aiot/releases/tag/v0.3.0-beta"><strong>下载测试版（v0.3.0-beta）</strong></a>
     <br />
     <br />
   </p>
@@ -70,7 +70,10 @@ python3 build.py # 编译
 ![IMG_20250805_111518](https://github.com/user-attachments/assets/94297462-4603-42bc-8342-bb4bd9deb0c0)
 ![IMG_20250805_111506](https://github.com/user-attachments/assets/1ae688be-d944-4e40-b623-139a202f6456)
 ![IMG_20250805_111455](https://github.com/user-attachments/assets/c9ddb98f-ea78-43ff-89f1-5b105eb8bd6c)
-
+<img width="281" height="820" alt="Vela_Virtual_Device_Band-2025-08-07-11-16-35" src="https://github.com/user-attachments/assets/6068a107-795a-4b85-8e87-0576d8c08a46" />
+<img width="281" height="820" alt="Vela_Virtual_Device_Band-2025-08-07-11-16-40" src="https://github.com/user-attachments/assets/b12e68b6-c745-4b52-8d32-2128e4d4fd86" />
+<img width="281" height="820" alt="Vela_Virtual_Device_Band-2025-08-07-11-16-48" src="https://github.com/user-attachments/assets/c3ddb77f-7d75-4350-a5d8-eacd2f48cb3a" />
+<img width="281" height="820" alt="Vela_Virtual_Device_Band-2025-08-07-11-16-52" src="https://github.com/user-attachments/assets/ea4ec769-13fc-41d8-b7ad-99b078110cec" />
 
 ## 调试该项目
 ### 1. 开发
