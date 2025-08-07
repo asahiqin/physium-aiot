@@ -16,8 +16,9 @@
 
 ## 简介
 此quickapp受Casio计算器的Physium应用（即「理化」应用）启发，期望在小米手环上实现相关功能，方便查看物理常数、化学元素周期表等数据
+
 ## 支持设备
-通过测试的有小米手环9Pro和小米手环9
+通过测试的有小米手环9Pro和小米手环9，按理说小米手环10也支持，但未经过实机测试
 
 ## 功能与待办
 - [x] 基本元素周期表查看
@@ -43,6 +44,23 @@
 5. unit：物理量单位，可以留空，支持LaTeX
 
 默认的json会在采用值中出现
+
+## 构建
+因为米环9Pro与米环9对于图标要求不一样，而官方没有给出处理方法，所以你需要使用作者的构造脚本来编译
+
+该编译脚本未在Windows下测试
+
+环境要求：python 3.10及以上, nodejs, linux或macOS等类Unix系统
+
+``` shell
+git clone https://github.com/asahiqin/physium-aiot.git # 克隆仓库
+cd physium-aiot
+npm install # 安装依赖
+python3 build.py # 编译
+```
+
+编译好的文件会出现在release文件夹下，band9前缀的是小米手环9，band9p前缀的是小米手环9Pro
+
 ## 预览图
 
 ![IMG_20250804_003715](https://github.com/user-attachments/assets/b30ea615-1981-4942-8f51-c92dee0db1aa)
@@ -62,12 +80,6 @@ npm install
 npm run start
 ```
 
-#### 2. 构建
-
-```
-npm run build
-npm run release
-```
 
 ### 3. 调试
 
