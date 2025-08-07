@@ -1,9 +1,10 @@
 <template>
   <div class="home-page">
-    <div class="appBar">
+    <div class="appBar-{{screen_type}}">
       <text>Physium</text>
       <img class="more_button" src="/common/more_horiz.png" @click="gotoInfoPage" />
     </div>
+  
     <div style="width: 100%; height: 10px"></div>
     <div class="card">
       <text class="card__title">元素周期表</text>
@@ -33,17 +34,20 @@
 
 <script>
 import router from "@system.router"
+import device from "@system.device"
 export default {
   private: {
     loading: "",
-    elements_button: true
-  },
-  onInit() {
-    console.log("[PHYSIUM]Home Page")
+    elements_button: true,
+    width: "",
+    screen_type: ""
   },
   onShow() {
     this.loading = ""
     this.elements_button = true
+  },
+  onInit(){
+    this.screen_type = this.$app.$def.device.screen_type
   },
   back() {
     router.back()
@@ -88,7 +92,7 @@ export default {
   height: 40px;
   width: 40px;
 }
-.appBar {
+.appBar-rect {
   display: flex;
   align-items: center; /* 垂直居中对齐子项 */
   justify-content: space-between; /* 标题靠左，操作靠右 */
@@ -106,6 +110,22 @@ export default {
   /* 确保应用栏在内容之上 */
   position: relative; /* 或 'fixed'/'sticky' 取决于你的布局需求 */
 }
+.appBar-pill {
+  display: flex;
+  align-items: center; /* 垂直居中对齐子项 */
+  justify-content:center; /* 标题靠左，操作靠右 */
+  flex-direction: column;
+  width: 100%;
+
+  padding: 16px 16px 16px 16px; /* 左右内边距 */
+
+  /* Material You 风格 */
+  background-color: #d0bcff; /* 背景色使用主色 */
+  color: #381e72; /* 文本和图标颜色 */
+
+  /* 确保应用栏在内容之上 */
+  position: relative; /* 或 'fixed'/'sticky' 取决于你的布局需求 */
+}
 .title {
   font-size: 25px;
   text-align: center;
@@ -113,7 +133,7 @@ export default {
 }
 .card {
   /* 基础布局和尺寸 (示例) */
-  width: 320px; /* 卡片宽度，根据内容和布局调整 */
+  width: 90%; /* 卡片宽度，根据内容和布局调整 */
   min-height: 120px; /* 最小高度 */
   padding: 16px; /* 内边距 */
   display: flex;

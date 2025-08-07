@@ -4,7 +4,9 @@
 /sign
 /dist
 /build
+/release
 .husky/
 .DS_store
 .idea
 .venv
+/temp_bak

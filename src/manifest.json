@@ -1,9 +1,10 @@
 {
   "package": "io.github.asahiqin.physium",
   "name": "physium",
-  "versionName": "v0.2.0-alpha",
-  "versionCode": 1,
+  "versionName": "v0.3.0-beta",
+  "versionCode": 3,
   "minPlatformVersion": 1000,
+  "minAPILevel": 2,
   "icon": "/common/logo.png",
   "deviceTypeList": [
     "watch"
@@ -18,7 +19,8 @@
     {
       "name": "system.device"
     },
-    { "name": "system.prompt" }
+    { "name": "system.prompt" },
+    { "name": "system.device" }
   ],
   "config": {
     "logLevel": "log",

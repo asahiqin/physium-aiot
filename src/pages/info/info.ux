@@ -1,6 +1,6 @@
 <template>
   <div class="info-page">
-    <div class="appBar" style="">
+    <div class="appBar-{{screen_type}}"  style="">
       <img
         src="/common/back.png"
         style="object-fit: cover; height: 40px; width: 40px"
@@ -12,14 +12,14 @@
     <div style="width: 100%; height: 10px"></div>
     <div class="card">
       <text class="card__title">开发者:AsahiQin</text>
-      <text class="card__title">版本v0.2.0-alpha</text>
+      <text class="card__title">版本v0.3.0-beta</text>
       <text class="card__title">该项目基于GPL v2.0开源</text>
     </div>
     <div class="divider"></div>
     <text class="title">该项目数据部分来源于Casio的Physium</text>
     <div class="divider"></div>
     <div style="width: 100%; height: 20px"></div>
-    <text class="title">用到的开源项目：</text>
+    <text class="title">用到的开源项目</text>
     <div style="width: 100%; height: 20px"></div>
     <div class="divider"></div>
     <div class="card">
@@ -33,6 +33,8 @@
       <text class="card__title">MIT License</text>
     </div>
     <div class="divider"></div>
+    <text class="title">APILevel:{{ level }}</text>
+    <div class="divider"></div>
     <text class="title" @click="gotoGPL">查看GPL v2.0 英文副本</text>
     <div style="width: 100%; height: 40px"></div>
   </div>
@@ -40,12 +42,17 @@
 
 <script>
 import router from "@system.router"
-import {getElement} from "../../elements/elements.js"
-
 export default {
-  private: {},
+  private: {
+    level: "",
+    screen: ""
+  },
   back() {
     router.back()
+  },
+  onInit() {
+    this.screen_type = this.$app.$def.device.screen_type
+
   },
   gotoGPL() {
     router.push({
@@ -67,7 +74,7 @@ export default {
   text-align: center;
   color: #e6e0e9;
 }
-.appBar {
+.appBar-rect {
   display: flex;
   align-items: center; /* 垂直居中对齐子项 */
   justify-content: space-between; /* 标题靠左，操作靠右 */
@@ -81,6 +88,22 @@ export default {
   color: #381e72; /* 文本和图标颜色 */
   border-bottom-left-radius: 0px; /* 对于顶部栏，通常是直角 */
   border-bottom-right-radius: 0px; /* 如果需要柔和边缘，可设置为例如 16px */
+
+  /* 确保应用栏在内容之上 */
+  position: relative; /* 或 'fixed'/'sticky' 取决于你的布局需求 */
+}
+.appBar-pill {
+  display: flex;
+  align-items: center; /* 垂直居中对齐子项 */
+  justify-content:center; /* 标题靠左，操作靠右 */
+  flex-direction: column;
+  width: 100%;
+
+  padding: 16px 16px 16px 16px; /* 左右内边距 */
+
+  /* Material You 风格 */
+  background-color: #d0bcff; /* 背景色使用主色 */
+  color: #381e72; /* 文本和图标颜色 */
 
   /* 确保应用栏在内容之上 */
   position: relative; /* 或 'fixed'/'sticky' 取决于你的布局需求 */
@@ -106,7 +129,7 @@ export default {
 }
 .card {
   /* 基础布局和尺寸 (示例) */
-  width: 320px; /* 卡片宽度，根据内容和布局调整 */
+  width: 90%; /* 卡片宽度，根据内容和布局调整 */
   min-height: 120px; /* 最小高度 */
   padding: 16px; /* 内边距 */
   display: flex;

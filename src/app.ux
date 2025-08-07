@@ -1,7 +1,24 @@
 <script>
+import device from "@system.device"
 export default {
+  device: {
+    screen_type:""
+  },
   onCreate() {
     console.log("app created")
+    var screen_type
+    device.getInfo({
+      success: function (ret) {
+        console.log(ret)
+        if(ret.screenWidth < 250){
+          screen_type = "pill"
+        }else{
+          screen_type = "rect"
+        }
+      }
+    })
+    console.log(screen_type)
+    this.device.screen_type = screen_type
   },
   onDestroy() {
     console.log("app destroyed")

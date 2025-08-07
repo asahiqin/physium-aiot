@@ -8,6 +8,8 @@
   "scripts": {
     "start": "aiot start --watch",
     "build": "aiot build",
+    "build:circle": "cross-env DEVICE_TYPE=WATCH SHAPE=PILL aiot build --enable-custom-component",
+    "build:rect": "cross-env DEVICE_TYPE=WATCH SHAPE=RECT aiot build --enable-custom-component",  
     "release": "aiot release",
     "lint": "eslint --format codeframe --fix --ext .ux,.js src/"
   },
@@ -25,6 +27,8 @@
   },
   "devDependencies": {
     "@aiot-toolkit/jsc": "^1.0.3",
-    "aiot-toolkit": "^2.0.4"
+    "aiot-toolkit": "^2.0.4",
+    "conditional-compilation-webpack-plugin": "^1.0.0",
+    "cross-env": "^10.0.0"
   }
 }
