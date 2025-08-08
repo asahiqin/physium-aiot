@@ -1,0 +1,43 @@
+@use "base";
+.card {
+    width: 90%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    background-color: base.$surface-container;
+    border-radius: 16px;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px -1px #000000, 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+
+    color: base.$on-surface;
+    transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.card__title {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: base.$on-surface;
+}
+
+.card__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    .button {
+        background-color: base.$primary;
+        height: 60px;
+        width: 120px;
+        border-radius: 12px;
+        align-items: center;
+        border: none;
+        font-size: 18px;
+        color: base.$on-primary;
+        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+            0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+}

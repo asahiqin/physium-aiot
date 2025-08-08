@@ -1,16 +1,18 @@
 <template>
   <div class="index-page">
-    <div class="appBar" style="width: 900px">
-      <div style="height:100%;width:40px"></div>
+    <div class="appBar {{ screen_type }}" style="width: 900px">
+      <div style="height: 100%; width: 40px"></div>
       <img
         src="/common/back.png"
-        style="object-fit: cover; height: 40px; width: 40px"
+        style="object-fit: cover; height: 45px; width: 45px"
         @click="back"
       />
       <text>元素周期表</text>
       <div></div>
     </div>
-    <text if="{{num_2.length == 0}}" class="title" style="font-size: 25px;margin-top: 10px">正在渲染中,请耐心等待</text>
+    <text if="{{ num_2.length == 0 }}" class="title" style="font-size: 25px; margin-top: 10px">
+      正在渲染中,请耐心等待
+    </text>
     <scroll
       scroll-x="true"
       scroll-y="true"
@@ -20,17 +22,30 @@
       <div class="elements-line">
         <div for="{{ num_18 }}" tid="uniqueId">
           <div class="elements-space" style="flex-direction: column">
-            <text class="table-title">{{ $idx }}</text>
+            <text class="table-title">{{ index[$idx] }}</text>
+            <text class="table-title">{{ $idx + 1 }}</text>
           </div>
         </div>
       </div>
       <!--第一周期-->
       <div class="elements-line">
-        <input if="{{num_2 != []}}" class="elements" type="button" value="H" @click="getElement('1')" />
+        <input
+          if="{{ num_2 != [] }}"
+          class="elements"
+          type="button"
+          value="H"
+          @click="getElement('1')"
+        />
         <div for="{{ num_array(16) }}" tid="uniqueId">
           <div class="elements-space"></div>
         </div>
-        <input if="{{num_2 != []}}" class="elements" type="button" value="He" @click="getElement('2')" />
+        <input
+          if="{{ num_2 != [] }}"
+          class="elements"
+          type="button"
+          value="He"
+          @click="getElement('2')"
+        />
       </div>
       <!--第二周期-->
       <div class="elements-line">
@@ -176,7 +191,6 @@
 import router from "@system.router"
 import pre_generated_data from "../../../elements/pre_generated_data.json"
 
-
 function num_array(count) {
   return new Array(count).fill(0)
 }
@@ -185,14 +199,19 @@ export default {
   private: {
     element: "",
     elements_symbol_data: pre_generated_data.symbols,
+    index: pre_generated_data.index,
     num_2: [],
     num_6: [],
     num_10: [],
     num_15: [],
-    num_18: []
+    num_18: [],
+    screen_type: ""
+  },
+  onInit() {
+    this.screen_type = this.$app.$def.device.screen_type
   },
   onShow() {
-    if (this.num_2.length == 0 ){
+    if (this.num_2.length == 0) {
       this.num_2 = pre_generated_data.num[0]
       this.num_6 = pre_generated_data.num[1]
       this.num_10 = pre_generated_data.num[2]
@@ -219,37 +238,11 @@ export default {
 }
 </script>
 
-<style>
-.back-button {
-  left: 8px;
-  font-size: 20px; /* Adjust as needed, 16px by default */
-  color: #e6e0e9; /* Text color from Material You palette */
-  text-decoration: none; /* Remove underline from link */
-
-  /* Spacing and Shape */
-  padding: 5px 5px 5px 5px; /* Standard Material You text button padding */
-  border-radius: 3px; /* Fully rounded corners for a pill shape, characteristic of Material You */
-
-  /* Interaction (Subtle) */
-  background-color: transparent; /* No default background for a text button */
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Smooth transition for hover/focus */
-}
-.appBar {
-  display: flex;
-  align-items: center; /* 垂直居中对齐子项 */
-  justify-content: flex-start; /* 标题靠左，操作靠右 */
-  width: 100%;
-
-  height: 64px; /* 标准应用栏高度 */
-  padding: 16px 16px 16px 16px; /* 左右内边距 */
-
-  /* Material You 风格 */
-  background-color: #d0bcff; /* 背景色使用主色 */
-  color: #381e72; /* 文本和图标颜色 */
-
-  /* 确保应用栏在内容之上 */
-  position: relative; /* 或 'fixed'/'sticky' 取决于你的布局需求 */
-}
+<style lang="scss">
+@use "../../../material/base.scss";
+@import "../../../material/divider.scss";
+@import "../../../material/base.scss";
+@import "../../../material/app_bar.scss";
 .index-page {
   flex-direction: column;
   background-color: #141218;
@@ -260,59 +253,32 @@ export default {
 #text {
   color: #381e72;
 }
-
-.title {
+.elements {
+  width: 50px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
   font-size: 20px;
   text-align: center;
-  color: #e6e0e9;
-}
-
-.btn {
-  width: 200px;
-  height: 40px;
-  margin-top: 20px;
-  border-radius: 5px;
-  background-color: #09ba07;
-  font-size: 20px;
-  color: #ffffff;
-}
-.elements {
-  width: 46px;
-  height: 46px;
-  background-color: #d0bcff;
-  /* 使用较大的圆角，符合Material You的柔和曲线 */
-  border-radius: 12px; /* 示例圆角，可以根据喜好调整 */
-  display: flex; /* 使用Flexbox进行内容居中 */
-  justify-content: center; /* 水平居中 */
-  align-items: center; /* 垂直居中 */
-  border: none; /* 移除默认边框 */
-  font-size: 14px; /* 字体大小，根据按钮尺寸调整以确保可读性 */
-  color: #381e72; /* 文字颜色 */
-  text-align: center; /* 确保文本本身居中，尽管flexbox已处理 */
   margin-left: 2px;
   margin-right: 2px;
   margin-top: 2px;
   margin-bottom: 2px;
+  background-color: base.$primary;
+  color: base.$on-primary;
 }
 .table-title {
   align-items: center;
-  color: #d0bcff;
+  color: #e6e0e9;
 
-  font-size: 14px; /* 字体大小，根据按钮尺寸调整以确保可读性 */
+  font-size: 20px;
 }
 .elements-space {
-  width: 50px;
-  height: 50px;
-  display: flex; /* 使用Flexbox进行内容居中 */
-  justify-content: center; /* 水平居中 */
-  align-items: center; /* 垂直居中 */
-}
-.divider {
-  width: 100%; /* 占据父容器的全部宽度 */
-  height: 1px; /* 分割线的粗细 */
-  background-color: #49454f; /* 使用主题中的分割线颜色 */
-  border: none; /* 移除可能的默认边框 */
-  margin: 8px 0; /* 上下外边距，用于与内容分隔，可以根据需要调整 */
-  opacity: 0.6; /* 增加透明度使其更柔和 */
+  width: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

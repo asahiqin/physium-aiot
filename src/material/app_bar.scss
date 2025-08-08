@@ -1,0 +1,24 @@
+@use "base";
+
+.appBar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 16px 16px 16px 16px;
+
+    background-color: base.$primary;
+    color: base.$on-primary;
+
+    position: relative;
+
+    .rect {
+        flex-direction: row;
+        justify-content: space-between;
+        height: 80px;
+    }
+
+    .pill {
+        justify-content: center;
+        flex-direction: column;
+    }
+}

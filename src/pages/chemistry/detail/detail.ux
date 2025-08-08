@@ -1,28 +1,32 @@
 <template>
   <div class="detail-page">
-    <div class="appBar-{{screen}}" style="">
-      <img src="/common/back.png" style="object-fit:cover;height:40px;width:40px" @click="back"/>
+    <div class="appBar-{{ screen }}" style="">
+      <img
+        src="/common/back.png"
+        style="object-fit: cover; height: 40px; width: 40px"
+        @click="back"
+      />
       <text>{{ symbol }}信息</text>
       <div></div>
     </div>
 
-    <div style="width:100%;height:10px"></div>
-    <div style="padding-left: 10px;flex-direction:column;align-items:flex-start">
-    <text class="title">元素：{{ symbol }}</text>
-    <text class="title">序数：{{ index }}</text>
-    <text class="title">中文名：{{ name_chs }}</text>
-    <text class="title">相对原子质量：{{ mass }}</text>
-    <text class="title">英语名：{{ name_en }}</text>
+    <div style="width: 100%; height: 10px"></div>
+    <div style="padding-left: 10px; flex-direction: column; align-items: flex-start">
+      <text class="title">元素：{{ symbol }}</text>
+      <text class="title">序数：{{ index }}</text>
+      <text class="title">中文名：{{ name_chs }}</text>
+      <text class="title">相对原子质量：{{ mass }}</text>
+      <text class="title">英语名：{{ name_en }}</text>
     </div>
-    <div class='info'>
-    <text style="font-size: 15px;">注：部分元素中文名可能无法显示</text>
+    <div class="info">
+      <text style="font-size: 15px">注：部分元素中文名可能无法显示</text>
     </div>
   </div>
 </template>
 
 <script>
-import router from '@system.router' 
-import { getElement } from "../../../elements/elements.js"
+import router from "@system.router"
+import {getElement} from "../../../elements/elements.js"
 import device from "@system.device"
 export default {
   private: {
@@ -34,100 +38,42 @@ export default {
     screen: ""
   },
   protected: {
-    element: '',
+    element: "",
     index: ""
   },
-  onInit(){
+  onInit() {
     this.screen = this.$app.$def.device.screen_type
-
   },
-  onShow(){
-      console.log("[PHYSIUM]", this.element + "")
-      console.log(getElement("4").name_chs)
-      this.e_index = this.index
-      this.symbol = this.element
-      this.mass = getElement(this.element + "").mass.toString()
-      this.name_chs = getElement(this.element + "").name_chs
-      this.name_en = getElement(this.element + "").name
-
+  onShow() {
+    console.log("[PHYSIUM]", this.element + "")
+    console.log(getElement("4").name_chs)
+    this.e_index = this.index
+    this.symbol = this.element
+    this.mass = getElement(this.element + "").mass.toString()
+    this.name_chs = getElement(this.element + "").name_chs
+    this.name_en = getElement(this.element + "").name
   },
-  back(){
+  back() {
     router.back()
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+@import "../../../material/divider.scss";
+@import "../../../material/base.scss";
+@import "../../../material/app_bar.scss";
 .detail-page {
   flex-direction: column;
   align-items: flex-start;
   background-color: #141218;
 }
 
-.title {
-  font-size: 20px;
-  text-align: left;
-  color: #D0BCFF;
-
-}
-.appBar-rect {
-  display: flex;
-  align-items: center; /* 垂直居中对齐子项 */
-  justify-content: space-between; /* 标题靠左，操作靠右 */
-  width: 100%;
-
-  height: 64px; /* 标准应用栏高度 */
-  padding: 16px 16px 16px 16px; /* 左右内边距 */
-
-  /* Material You 风格 */
-  background-color: #d0bcff; /* 背景色使用主色 */
-  color: #381e72; /* 文本和图标颜色 */
-  border-bottom-left-radius: 0px; /* 对于顶部栏，通常是直角 */
-  border-bottom-right-radius: 0px; /* 如果需要柔和边缘，可设置为例如 16px */
-
-  /* 确保应用栏在内容之上 */
-  position: relative; /* 或 'fixed'/'sticky' 取决于你的布局需求 */
-}
-.appBar-pill {
-  display: flex;
-  align-items: center; /* 垂直居中对齐子项 */
-  justify-content:center; /* 标题靠左，操作靠右 */
-  flex-direction: column;
-  width: 100%;
-
-  padding: 16px 16px 16px 16px; /* 左右内边距 */
-
-  /* Material You 风格 */
-  background-color: #d0bcff; /* 背景色使用主色 */
-  color: #381e72; /* 文本和图标颜色 */
-
-  /* 确保应用栏在内容之上 */
-  position: relative; /* 或 'fixed'/'sticky' 取决于你的布局需求 */
-}
-.back-button {
-  /* Positioning */
-  position: absolute; /* Fixes the button relative to the viewport */
-  top: 16px;       /* 16px from the top edge */
-  left: 16px;      /* 16px from the left edge */
-  z-index: 1000;   /* Ensures it stays on top of other content */
-
-  font-size: 20px; /* Adjust as needed, 16px by default */
-  color: #E6E0E9; /* Text color from Material You palette */
-  text-decoration: none; /* Remove underline from link */
-
-  /* Spacing and Shape */
-  padding: 5px 5px; /* Standard Material You text button padding */
-  border-radius: 3px; /* Fully rounded corners for a pill shape, characteristic of Material You */
-
-  /* Interaction (Subtle) */
-  background-color: transparent; /* No default background for a text button */
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Smooth transition for hover/focus */
-}
 .info {
   position: absolute;
   bottom: 30px;
   right: 10px;
-  color: #CCC2DC;
+  color: #ccc2dc;
   font-size: 18px;
 }
 </style>
