@@ -3,24 +3,22 @@
     <div class="appBar-{{ device }}" style="">
       <img
         src="/common/back.png"
-        style="object-fit: cover; height: 40px; width: 40px"
+        class="back-button"
         @click="back"
       />
       <text>{{ symbol }}信息</text>
       <div></div>
     </div>
-
-    <div style="width: 100%; height: 10px"></div>
-    <div style="padding-left: 10px; flex-direction: column; align-items: flex-start">
-      <text class="title">元素：{{ symbol }}</text>
-      <text class="title">序数：{{ index }}</text>
-      <text class="title">中文名：{{ name_chs }}</text>
-      <text class="title">相对原子质量：{{ mass }}</text>
-      <text class="title">英语名：{{ name_en }}</text>
-    </div>
-    <div class="info">
-      <text style="font-size: 15px">注：部分元素中文名可能无法显示</text>
-    </div>
+    <scroll class="content-{{ device }}" scroll-y="true" scroll-x="true">
+      <div style="width: 100%; height: 10px"></div>
+      <div style="padding-left: 10px; flex-direction: column; align-items: flex-start">
+        <text class="title">元素：{{ symbol }}</text>
+        <text class="title">序数：{{ index }}</text>
+        <text class="title">中文名：{{ name_chs }}</text>
+        <text class="title">相对原子质量：{{ mass }}</text>
+        <text class="title">英语名：{{ name_en }}</text>
+      </div>
+    </scroll>
   </div>
 </template>
 
@@ -53,7 +51,9 @@ export default {
     this.name_en = getElement(this.element + "").name
   },
   back() {
-    router.back()
+    router.replace({
+      uri: "pages/chemistry/index"
+    })
   }
 }
 </script>

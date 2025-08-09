@@ -218,7 +218,7 @@
       <div style="height: 100%; width: 40px"></div>
       <img
         src="/common/back.png"
-        style="object-fit: cover; height: 45px; width: 45px"
+        class="back-button"
         @click="back"
       />
       <text>元素周期表</text>
@@ -283,7 +283,7 @@ export default {
   },
   getElement(element) {
     console.log(element)
-    router.push({
+    router.replace({
       uri: "/pages/chemistry/detail",
       params: {
         element: this.elements_symbol_data[element - 1],

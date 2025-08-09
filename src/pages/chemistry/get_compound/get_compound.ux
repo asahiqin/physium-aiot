@@ -1,19 +1,21 @@
 <import name="input-method" src="../../../InputMethod/InputMethod.ux"></import>
 <template>
   <div class="info-page">
-    <div style="width: 100%; height: 10px"></div>
-    <div class="card" @click="changeState">
-      <text class="text">{{ textValue }}_</text>
-      <text class="text">点击切换键盘</text>
-    </div>
-    <div class="card">
-      <text class="text" style="font-size: 20px">
-        {{ output }}
-      </text>
-      <div class="card__actions">
-        <input class="button" type="button" value="计算" @click="calc" />
+    <scroll scroll-y="true" class="content-{{ device }}">
+      <div style="width: 100%; height: 10px"></div>
+      <div class="card" @click="changeState">
+        <text class="text">{{ textValue }}_</text>
+        <text class="text">点击切换键盘</text>
       </div>
-    </div>
+      <div class="card">
+        <text class="text" style="font-size: 20px">
+          {{ output }}
+        </text>
+        <div class="card__actions">
+          <input class="button" type="button" value="计算" @click="calc" />
+        </div>
+      </div>
+    </scroll>
     <input-method
       hide="{{ hide }}"
       keyboardtype="{{ keyboardtype }}"
@@ -28,7 +30,7 @@
     <div class="appBar-{{ device }}" style="">
       <img
         src="/common/back.png"
-        style="object-fit: cover; height: 40px; width: 40px"
+        class="back-button"
         @click="back"
       />
       <text>计算</text>

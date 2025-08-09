@@ -11,11 +11,5 @@ $surface-container: #1d1b20;
 }
 
 .back-button {
-    left: 8px;
-    font-size: 20px;
-    color: #e6e0e9;
-    text-decoration: none;
-    padding: 5px 5px 5px 5px;
-
-    background-color: transparent;
+    object-fit: cover; height: 50px; width: 50px
 }

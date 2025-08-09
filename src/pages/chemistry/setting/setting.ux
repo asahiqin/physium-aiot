@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <scroll scroll-y="true" class="content-{{ device }}">
+    <scroll scroll-y="true" class="content-{{ device }}" scroll-x="true">
       <div class="notice-{{ screen_type }}">
         <text class="title">启用描述</text>
         <switch checked="{{ have_describe }}" @change="describeChangd" />
@@ -14,7 +14,7 @@
     <div class="appBar-{{ device }}" style="">
       <img
         src="/common/back.png"
-        style="object-fit: cover; height: 40px; width: 40px"
+        class="back-button"
         @click="back"
       />
       <text>元素周期表设置</text>

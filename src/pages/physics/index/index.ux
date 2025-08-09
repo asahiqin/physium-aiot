@@ -8,7 +8,7 @@
     <div class="appBar-{{ device }}" style="">
       <img
         src="/common/back.png"
-        style="object-fit: cover; height: 40px; width: 40px"
+        class="back-button"
         @click="back"
       />
       <text>物理常数表</text>
