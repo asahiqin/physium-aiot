@@ -7,7 +7,7 @@
   <p align="center">
     一个适用于Vela的化学与物理小工具	
     <br />
-    <a href="https://github.com/asahiqin/physium-aiot/releases/tag/v0.3.0-beta"><strong>下载测试版（v0.3.0-beta）</strong></a>
+    <a href="https://github.com/asahiqin/physium-aiot/releases/tag/v0.4.0-alpha"><strong>下载测试版（v0.4.0-alpha）</strong></a>
     <br />
     <br />
   </p>
@@ -25,7 +25,7 @@
 - [x] 基本元素信息查看
 - [x] 化学分子式计算
 - [x] 物理常数表
-- [ ] 化学元素周期表显示金属等分类
+- [x] 化学元素周期表显示金属等分类
 - [ ] 化学元素检索
 - [ ] 物理常数简介
 
@@ -64,7 +64,8 @@ python3 build.py # 编译
 ## 预览图
 
 ![IMG_20250804_003715](https://github.com/user-attachments/assets/b30ea615-1981-4942-8f51-c92dee0db1aa)
-![IMG_20250804_003650](https://github.com/user-attachments/assets/5e5454d4-0641-4657-9fc8-b855f2db7a6c)
+![Screenshot_2025-08-10-01-00-53-01_5d22d02936b63547da93c27569812c09](https://github.com/user-attachments/assets/df09e306-88b8-4bd1-8969-608423b977ea)
+![Screenshot_2025-08-10-01-01-15-97_5d22d02936b63547da93c27569812c09](https://github.com/user-attachments/assets/1fe5606e-66fe-4ba7-b243-9ce83d338a16)
 ![IMG_20250804_003628](https://github.com/user-attachments/assets/3781fc98-e9d8-4e05-849c-43826903011f)
 ![IMG_20250804_003601](https://github.com/user-attachments/assets/81350bbe-26f7-4912-868c-2f777d03ba29)
 ![IMG_20250805_111518](https://github.com/user-attachments/assets/94297462-4603-42bc-8342-bb4bd9deb0c0)
