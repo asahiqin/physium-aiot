@@ -1,6 +1,6 @@
 <template>
   <div class="detail-page">
-    <div class="appBar-{{ screen }}" style="">
+    <div class="appBar-{{ device }}" style="">
       <img
         src="/common/back.png"
         style="object-fit: cover; height: 40px; width: 40px"
@@ -27,7 +27,6 @@
 <script>
 import router from "@system.router"
 import {getElement} from "../../../elements/elements.js"
-import device from "@system.device"
 export default {
   private: {
     symbol: "",
@@ -35,14 +34,14 @@ export default {
     mass: "",
     name_chs: "",
     name_en: "",
-    screen: ""
+    device: ""
   },
   protected: {
     element: "",
     index: ""
   },
   onInit() {
-    this.screen = this.$app.$def.device.screen_type
+    this.device = this.$app.$def.device.device
   },
   onShow() {
     console.log("[PHYSIUM]", this.element + "")

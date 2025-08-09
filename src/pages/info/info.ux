@@ -1,6 +1,6 @@
 <template>
   <div class="info-page">
-    <div class="appBar {{screen_type}}"  style="">
+    <div class="appBar-{{ device }}" style="">
       <img
         src="/common/back.png"
         style="object-fit: cover; height: 40px; width: 40px"
@@ -9,32 +9,34 @@
       <text>更多信息</text>
       <div></div>
     </div>
-    <div style="width: 100%; height: 10px"></div>
-    <div class="card">
-      <text class="card__title">开发者:AsahiQin</text>
-      <text class="card__title">版本v0.3.0-beta</text>
-      <text class="card__title">该项目基于GPL v2.0开源</text>
-    </div>
-    <div class="divider"></div>
-    <text class="title">该项目数据部分来源于Casio的Physium</text>
-    <div class="divider"></div>
-    <div style="width: 100%; height: 20px"></div>
-    <text class="title">用到的开源项目</text>
-    <div style="width: 100%; height: 20px"></div>
-    <div class="divider"></div>
-    <div class="card">
-      <text class="card__title">输入控件</text>
-      <text class="card__title">NEORUAA/Vela_input_method</text>
-      <text class="card__title">MIT License</text>
-    </div>
-    <div class="card">
-      <text class="card__title">元素周期表部分逻辑</text>
-      <text class="card__title">shangzhenyang/periodic-table</text>
-      <text class="card__title">MIT License</text>
-    </div>
-    <div class="divider"></div>
-    <text class="title" @click="gotoGPL">查看GPL v2.0 英文副本</text>
-    <div style="width: 100%; height: 40px"></div>
+    <scroll scroll-y="true" class="content-{{ device }}">
+      <div style="width: 100%; height: 10px"></div>
+      <div class="card">
+        <text class="card__title">开发者:AsahiQin</text>
+        <text class="card__title">版本v0.4.0-alpha</text>
+        <text class="card__title">该项目基于GPL v2.0开源</text>
+      </div>
+      <div class="divider"></div>
+      <text class="title">该项目数据部分来源于Casio的Physium</text>
+      <div class="divider"></div>
+      <div style="width: 100%; height: 20px"></div>
+      <text class="title">用到的开源项目</text>
+      <div style="width: 100%; height: 20px"></div>
+      <div class="divider"></div>
+      <div class="card">
+        <text class="card__title">输入控件</text>
+        <text class="card__title">NEORUAA/Vela_input_method</text>
+        <text class="card__title">MIT License</text>
+      </div>
+      <div class="card">
+        <text class="card__title">元素周期表部分逻辑</text>
+        <text class="card__title">shangzhenyang/periodic-table</text>
+        <text class="card__title">MIT License</text>
+      </div>
+      <div class="divider"></div>
+      <text class="title" @click="gotoGPL">查看GPL v2.0 英文副本</text>
+      <div style="width: 100%; height: 40px"></div>
+    </scroll>
   </div>
 </template>
 
@@ -42,14 +44,14 @@
 import router from "@system.router"
 export default {
   private: {
-    screen: ""
+    screen: "",
+    device: ""
   },
   back() {
     router.back()
   },
   onInit() {
-    this.screen_type = this.$app.$def.device.screen_type
-
+    this.device = this.$app.$def.device.device
   },
   gotoGPL() {
     router.push({
@@ -69,6 +71,4 @@ export default {
   align-items: flex-start;
   background-color: #141218;
 }
-
-
 </style>

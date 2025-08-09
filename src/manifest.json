@@ -1,8 +1,8 @@
 {
   "package": "io.github.asahiqin.physium",
   "name": "physium",
-  "versionName": "v0.3.0-beta",
-  "versionCode": 3,
+  "versionName": "v0.4.0-alpha",
+  "versionCode": 4,
   "minPlatformVersion": 1000,
   "minAPILevel": 2,
   "icon": "/common/logo.png",
@@ -31,6 +31,9 @@
     "pages": {
       "pages/chemistry/index": {
         "component": "index"
+      },
+      "pages/chemistry/setting": {
+        "component": "setting"
       },
       "pages/chemistry/detail": {
         "component": "detail"

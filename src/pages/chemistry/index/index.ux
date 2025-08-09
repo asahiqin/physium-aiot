@@ -10,16 +10,15 @@
       <text>元素周期表</text>
       <div></div>
     </div>
-    <text if="{{ num_2.length == 0 }}" class="title" style="font-size: 25px; margin-top: 10px">
-      正在渲染中,请耐心等待
-    </text>
-    <scroll
-      scroll-x="true"
-      scroll-y="true"
-      style="flex-direction: column; width: 900px; height: 550px"
-      else
-    >
+    <scroll class="index-{{ have_describe }}" scroll-x="true">
+      <div class="divider"></div>
       <div class="elements-line">
+        <div class="elements-space" style="flex-direction: column" @click="setting">
+          <image
+            src="../../../common/setting.png"
+            style="height: 30px; width: 30px; object-fit: cover"
+          />
+        </div>
         <div for="{{ num_18 }}" tid="uniqueId">
           <div class="elements-space" style="flex-direction: column">
             <text class="table-title">{{ index[$idx] }}</text>
@@ -27,11 +26,34 @@
           </div>
         </div>
       </div>
+      <div class="elements-line" if="{{ have_describe }}">
+        <div for="{{ num_array(15) }}" tid="uniqueId">
+          <div class="elements-space describe" style="flex-direction: column"></div>
+        </div>
+        <div class="elements-space describe" style="flex-direction: column">
+          <text class="describe">氮族元素</text>
+        </div>
+        <div class="elements-space describe" style="flex-direction: column">
+          <text class="describe">氧族元素</text>
+        </div>
+        <div class="elements-space describe" style="flex-direction: column">
+          <text class="describe">卤素</text>
+        </div>
+        <div class="elements-space describe" style="flex-direction: column"></div>
+      </div>
+    </scroll>
+    <text if="{{ num_2.length == 0 }}" class="title" style="font-size: 25px; margin-top: 10px">
+      正在渲染中,请耐心等待
+    </text>
+    <scroll scroll-x="true" scroll-y="true" class="content-{{ device }}-{{ have_describe }}" else>
       <!--第一周期-->
       <div class="elements-line">
+        <div class="elements-space">
+          <text class="table-title">1</text>
+        </div>
         <input
           if="{{ num_2 != [] }}"
-          class="elements"
+          class="elements {{ element_type[0] }}"
           type="button"
           value="H"
           @click="getElement('1')"
@@ -41,7 +63,7 @@
         </div>
         <input
           if="{{ num_2 != [] }}"
-          class="elements"
+          class="elements {{ element_type[1] }}"
           type="button"
           value="He"
           @click="getElement('2')"
@@ -49,9 +71,12 @@
       </div>
       <!--第二周期-->
       <div class="elements-line">
+        <div class="elements-space">
+          <text class="table-title">2</text>
+        </div>
         <div for="{{ num_2 }}">
           <input
-            class="elements"
+            class="elements {{ element_type[$idx+2] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+2] }}"
             @click="getElement($idx + 3)"
@@ -62,7 +87,7 @@
         </div>
         <div for="{{ num_6 }}">
           <input
-            class="elements"
+            class="elements {{ element_type[$idx+4] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+4] }}"
             @click="getElement($idx + 5)"
@@ -71,9 +96,12 @@
       </div>
       <!--第三周期-->
       <div class="elements-line">
+        <div class="elements-space">
+          <text class="table-title">3</text>
+        </div>
         <div for="{{ num_2 }}">
           <input
-            class="elements"
+            class="elements {{ element_type[$idx+10] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+10] }}"
             @click="getElement($idx + 11)"
@@ -84,7 +112,7 @@
         </div>
         <div for="{{ num_6 }}">
           <input
-            class="elements"
+            class="elements {{ element_type[$idx+12] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+12] }}"
             @click="getElement($idx + 13)"
@@ -93,9 +121,12 @@
       </div>
       <!--第四周期-->
       <div class="elements-line">
+        <div class="elements-space">
+          <text class="table-title">4</text>
+        </div>
         <div for="{{ num_18 }}">
           <input
-            class="elements"
+            class="elements {{ element_type[$idx+18] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+18] }}"
             @click="getElement($idx + 19)"
@@ -104,9 +135,12 @@
       </div>
       <!--第五周期-->
       <div class="elements-line">
+        <div class="elements-space">
+          <text class="table-title">5</text>
+        </div>
         <div for="{{ num_18 }}">
           <input
-            class="elements"
+            class="elements {{ element_type[$idx+36] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+36] }}"
             @click="getElement($idx + 37)"
@@ -115,18 +149,21 @@
       </div>
       <!--第六周期-->
       <div class="elements-line">
+        <div class="elements-space">
+          <text class="table-title">6</text>
+        </div>
         <div for="{{ num_2 }}">
           <input
-            class="elements"
+            class="elements {{ element_type[$idx+54] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+54] }}"
             @click="getElement($idx + 55)"
           />
         </div>
-        <input class="elements" type="button" value="镧系" />
+        <input class="elements {{ element_type[55] }}" type="button" value="镧系" />
         <div for="{{ num_15 }}">
           <input
-            class="elements"
+            class="elements {{ element_type[$idx+71] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+71] }}"
             @click="getElement($idx + 72)"
@@ -135,18 +172,21 @@
       </div>
       <!--第七周期-->
       <div class="elements-line">
+        <div class="elements-space">
+          <text class="table-title">7</text>
+        </div>
         <div for="{{ num_2 }}">
           <input
-            class="elements"
+            class="elements {{ element_type[$idx+86] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+86] }}"
             @click="getElement($idx + 87)"
           />
         </div>
-        <input class="elements" type="button" value="锕系" />
+        <input class="elements {{ element_type[87] }}" type="button" value="锕系" />
         <div for="{{ num_15 }}">
           <input
-            class="elements"
+            class="elements {{ element_type[$idx+103] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+103] }}"
             @click="getElement($idx + 104)"
@@ -162,7 +202,7 @@
         </div>
         <div for="{{ num_15 }}">
           <input
-            class="elements"
+            class="elements {{ element_type[$idx+56] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+56] }}"
             @click="getElement($idx + 57)"
@@ -176,7 +216,7 @@
         </div>
         <div for="{{ num_15 }}">
           <input
-            class="elements"
+            class="elements {{ element_type[$idx+88] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+88] }}"
             @click="getElement($idx + 89)"
@@ -205,18 +245,37 @@ export default {
     num_10: [],
     num_15: [],
     num_18: [],
-    screen_type: ""
+    screen_type: "",
+    element_type: new Array(118).fill("normal"),
+    device: "",
+    have_describe: false
   },
   onInit() {
     this.screen_type = this.$app.$def.device.screen_type
+
+    this.device = this.$app.$def.device.device
   },
   onShow() {
+    this.have_describe = this.$app.$def.chemistry.have_describe
+    this.alkali_change(this.$app.$def.chemistry.alkali)
     if (this.num_2.length == 0) {
       this.num_2 = pre_generated_data.num[0]
       this.num_6 = pre_generated_data.num[1]
       this.num_10 = pre_generated_data.num[2]
       this.num_15 = pre_generated_data.num[3]
       this.num_18 = pre_generated_data.num[4]
+    }
+  },
+  alkali_change(e){
+    const alkali =  pre_generated_data.element_type.alkali
+    if (e){
+      for(var i of alkali){
+        this.element_type[i-1]="alkali"
+      }
+    }else{
+      for(var i of alkali){
+        this.element_type[i-1]="normal"
+      }
     }
   },
   num_array(count) {
@@ -232,6 +291,11 @@ export default {
       }
     })
   },
+  setting(){
+    router.push({
+      uri: "/pages/chemistry/setting",
+    })
+  },
   back() {
     router.back()
   }
@@ -242,7 +306,33 @@ export default {
 @use "../../../material/base.scss";
 @import "../../../material/divider.scss";
 @import "../../../material/base.scss";
-@import "../../../material/app_bar.scss";
+
+$alkali: #6c3b01;
+$alkaline: #846011;
+$lanthanoid: #402c17;
+$actinoid: #732e4c;
+$transition: #711019;
+$poor: #003666;
+$metalloid: #015146;
+$nonmetal: #3e6418;
+$noble: #3a2151;
+$nocategory: #222;
+$devices: band9, band9p, band10;
+$device-height: 490px, 480px, 520px;
+.appBar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 16px 16px 16px 16px;
+
+  background-color: base.$primary;
+  color: base.$on-primary;
+
+  position: relative;
+
+  flex-direction: row;
+  height: 80px;
+}
 .index-page {
   flex-direction: column;
   background-color: #141218;
@@ -266,8 +356,14 @@ export default {
   margin-right: 2px;
   margin-top: 2px;
   margin-bottom: 2px;
-  background-color: base.$primary;
-  color: base.$on-primary;
+  .normal {
+    color: base.$on-primary;
+    background-color: base.$primary;
+  }
+  .alkali {
+    color: base.$on-surface;
+    background-color: $alkali;
+  }
 }
 .table-title {
   align-items: center;
@@ -276,9 +372,39 @@ export default {
   font-size: 20px;
 }
 .elements-space {
-  width: 54px;
+  width: 56px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.describe {
+  height: 50px;
+  align-items: center;
+  color: #e6e0e9;
+
+  font-size: 18px;
+}
+.index-true {
+  flex-direction: column;
+  width: 900px;
+  height: 120px;
+}
+.index-false {
+  flex-direction: column;
+  width: 900px;
+  height: 70px;
+}
+@each $d in $devices {
+  $index: index($devices, $d);
+  .content-#{$d}-true {
+    width: 900px;
+    flex-direction: column;
+    height: nth($device-height, $index) - 200px;
+  }
+  .content-#{$d}-false {
+    width: 900px;
+    flex-direction: column;
+    height: nth($device-height, $index) - 150px;
+  }
 }
 </style>

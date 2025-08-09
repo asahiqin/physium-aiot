@@ -6,25 +6,17 @@
         style="object-fit: cover; height: 40px; width: 40px"
         @click="back"
       />
-      <text>信息</text>
+      <text>元素周期表设置</text>
       <div></div>
     </div>
     <scroll scroll-y="true" class="content-{{ device }}">
       <div class="notice-{{ screen_type }}">
-        <text class="title">{{ describe }}</text>
-        <img class="latex" src="../../../physics/assests/{{ latex }}" />
+        <text class="title">启用描述</text>
+        <switch checked="{{ have_describe }}" @change="describeChangd" />
       </div>
       <div class="notice-{{ screen_type }}">
-        <text class="title">值</text>
-        <text class="title">{{ value }}</text>
-      </div>
-      <div class="notice-{{ screen_type }}">
-        <text class="title">单位</text>
-        <img src="../../../physics/assests/{{ unit }}" class="latex" />
-      </div>
-      <div class="notice-{{ screen_type }}" if="{{ calc != '' }}">
-        <text class="title">计算</text>
-        <img src="../../../physics/assests/{{ calc }}" class="latex" />
+        <text class="title">显示碱金属</text>
+        <switch checked="{{ alkali }}" @change="alkaliChangd" />
       </div>
       <div style="width: 100%; height: 40px"></div>
     </scroll>
@@ -33,42 +25,29 @@
 
 <script>
 import router from "@system.router"
-function find(symbol, constant) {
-  for (var i = 0; i < constant.length; i++) {
-    if (constant[i].symbol == symbol) {
-      console.log(constant[i])
-      return constant[i]
-    }
-  }
-}
 export default {
   private: {
-    describe: "",
-    calc: "",
-    unit: "",
-    value: "",
-    latex: "",
     screen_type: "",
-    device: ""
+    device: "",
+    have_describe: true,
+    alkali: false
   },
   protected: {
     symbol: "",
     constant: []
   },
-  onShow() {
-    console.log(this.constant)
-    this.constant = JSON.parse(this.constant)
-    var content = find(this.symbol, this.constant)
-    this.describe = content.describe
-    ;(this.unit = content.unit_latex), (this.value = content.value)
-    this.latex = content.latex
-    if (content.calc != "") {
-      this.calc = content.calc_latex
-    }
-  },
+  onShow() {},
   onInit() {
+    this.alkali = this.$app.$def.chemistry.alkali
+    this.have_describe = this.$app.$def.chemistry.have_describe
     this.screen_type = this.$app.$def.device.screen_type
     this.device = this.$app.$def.device.device
+  },
+  describeChangd(e) {
+    this.$app.$def.chemistry.have_describe = e.checked
+  },
+  alkaliChangd(e) {
+    this.$app.$def.chemistry.alkali = e.checked
   },
   back() {
     router.back()

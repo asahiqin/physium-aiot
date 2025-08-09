@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div class="appBar-{{screen_type}}" style="">
+    <div class="appBar-{{ device }}" style="">
       <img
         src="/common/back.png"
         style="object-fit: cover; height: 40px; width: 40px"
@@ -9,9 +9,11 @@
       <text>物理常数表</text>
       <div></div>
     </div>
-    <div for="{{ type }}" class="card" @click="gotoSubmenu($item.code, $item.chs)">
-      <text class="title">{{ $item.chs }}</text>
-    </div>
+    <scroll scroll-y="true" class="content-{{ device }}">
+      <div for="{{ type }}" class="card" @click="gotoSubmenu($item.code, $item.chs)">
+        <text class="title">{{ $item.chs }}</text>
+      </div>
+    </scroll>
   </div>
 </template>
 
@@ -42,11 +44,10 @@ export default {
         chs: "采用值"
       }
     ],
-    screen_type:""
+    device: ""
   },
-  onInit(){
-    this.screen_type = this.$app.$def.device.screen_type
-
+  onInit() {
+    this.device = this.$app.$def.device.device
   },
   back() {
     router.back()
@@ -64,7 +65,6 @@ export default {
 }
 </script>
 
-
 <style lang="scss">
 @import "../../../material/divider.scss";
 @import "../../../material/base.scss";
@@ -72,8 +72,7 @@ export default {
 @import "../../../material/card.scss";
 .page {
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   background-color: #141218;
 }
-
 </style>

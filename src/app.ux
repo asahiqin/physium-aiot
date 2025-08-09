@@ -2,23 +2,42 @@
 import device from "@system.device"
 export default {
   device: {
-    screen_type:""
+    screen_type:"",
+    height: 0,
+    device: ""
+  },
+  chemistry:{
+    have_describe: true,
+    alkali: false
   },
   onCreate() {
     console.log("app created")
-    var screen_type
+    var screen_type,height,type
     device.getInfo({
       success: function (ret) {
-        console.log(ret)
+        console.log(ret.screenWidth)
+        height = ret.screenHeight
         if(ret.screenWidth < 250){
           screen_type = "pill"
         }else{
           screen_type = "rect"
         }
+        if(ret.screenWidth == 212){
+          type = "band10"
+        }else if(ret.screenWidth == 192){
+          type = "band9"
+        }else if(ret.screenWidth == 336){
+          type = "band9p"
+        }
       }
     })
     console.log(screen_type)
+    this.device.height = height
     this.device.screen_type = screen_type
+    this.device.device = type
+  },
+  onInit(){
+    
   },
   onDestroy() {
     console.log("app destroyed")
