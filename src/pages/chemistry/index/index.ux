@@ -1,6 +1,10 @@
 <template>
   <div class="index-page">
-    <text if="{{ num_2.length == 0 }}" class="title" style="font-size: 25px; margin-top: 10px;position: absolute; top:250px;left: 10px">
+    <text
+      if="{{ num_2.length == 0 }}"
+      class="title"
+      style="font-size: 25px; margin-top: 10px; position: absolute; top: 250px; left: 10px"
+    >
       正在渲染中,请耐心等待
     </text>
     <scroll scroll-x="true" scroll-y="true" class="content-{{ device }}-{{ have_describe }}" else>
@@ -17,10 +21,7 @@
           @click="getElement('1')"
         />
         <div for="{{ num_array(16) }}">
-          <input
-            class="elements normal"
-            type="button"
-          />
+          <div class="elements-space"></div>
         </div>
         <input
           if="{{ num_2 != [] }}"
@@ -44,10 +45,7 @@
           />
         </div>
         <div for="{{ num_10 }}">
-          <input
-            class="elements normal"
-            type="button"
-          />
+          <div class="elements-space"></div>
         </div>
         <div for="{{ num_6 }}">
           <input
@@ -72,10 +70,7 @@
           />
         </div>
         <div for="{{ num_10 }}">
-          <input
-            class="elements normal"
-            type="button"
-          />
+          <div class="elements-space"></div>
         </div>
         <div for="{{ num_6 }}">
           <input
@@ -127,7 +122,7 @@
             @click="getElement($idx + 55)"
           />
         </div>
-        <input class="elements {{ element_type[55] }}" type="button" value="镧系" />
+        <input class="elements lanthanoid" type="button" value="镧系" />
         <div for="{{ num_15 }}">
           <input
             class="elements {{ element_type[$idx+71] }}"
@@ -150,7 +145,7 @@
             @click="getElement($idx + 87)"
           />
         </div>
-        <input class="elements {{ element_type[87] }}" type="button" value="锕系" />
+        <input class="elements actinoid" type="button" value="锕系" />
         <div for="{{ num_15 }}">
           <input
             class="elements {{ element_type[$idx+103] }}"
@@ -169,7 +164,7 @@
         </div>
         <div for="{{ num_15 }}">
           <input
-            class="elements {{ element_type[$idx+56] }}"
+            class="elements lanthanoid"
             type="button"
             value="{{ elements_symbol_data[$idx+56] }}"
             @click="getElement($idx + 57)"
@@ -183,7 +178,7 @@
         </div>
         <div for="{{ num_15 }}">
           <input
-            class="elements {{ element_type[$idx+88] }}"
+            class="elements actinoid"
             type="button"
             value="{{ elements_symbol_data[$idx+88] }}"
             @click="getElement($idx + 89)"
@@ -225,11 +220,7 @@
     </scroll>
     <div class="appBar {{ screen_type }}" style="width: 1026px">
       <div style="height: 100%; width: 40px"></div>
-      <img
-        src="/common/back.png"
-        class="back-button"
-        @click="back"
-      />
+      <img src="/common/back.png" class="back-button" @click="back" />
       <text>元素周期表</text>
       <div></div>
     </div>
@@ -252,7 +243,7 @@ export default {
     num_2: [],
     num_6: [],
     num_15: [],
-    num_10:[],
+    num_10: [],
     num_18: [],
     screen_type: "",
     element_type: new Array(118).fill("normal"),
@@ -266,25 +257,60 @@ export default {
   },
   onShow() {
     this.have_describe = this.$app.$def.chemistry.have_describe
-    this.alkali_change(this.$app.$def.chemistry.alkali)
+    this.change()
     if (this.num_2.length == 0) {
       this.num_2 = pre_generated_data.num[0]
       this.num_6 = pre_generated_data.num[1]
-
       this.num_10 = pre_generated_data.num[2]
       this.num_15 = pre_generated_data.num[3]
       this.num_18 = pre_generated_data.num[4]
     }
   },
-  alkali_change(e){
-    const alkali =  pre_generated_data.element_type.alkali
-    if (e){
-      for(var i of alkali){
-        this.element_type[i-1]="alkali"
+  change() {
+    const data = this.$app.$def.chemistry
+    const names = [
+      "alkali",
+      "alkaline",
+      "noble",
+      "transition",
+      "post_transition",
+      "metalloids",
+      "active_nometals"
+    ]
+    for (var n of names) {
+      var e = data[n]
+      var element_t = []
+      switch (n) {
+        case "alkali":
+          element_t = pre_generated_data.element_type.alkali
+          break
+        case "alkaline":
+          element_t = pre_generated_data.element_type.alkaline
+          break
+        case "noble":
+          element_t = pre_generated_data.element_type.noble
+          break
+        case "transition":
+          element_t = pre_generated_data.element_type.transition
+          break
+        case "post_transition":
+          element_t = pre_generated_data.element_type.post_transition
+          break
+        case "metalloids":
+          element_t = pre_generated_data.element_type.metalloids
+          break
+        case "active_nometals":
+          element_t = pre_generated_data.element_type.active_nometals
+          break
       }
-    }else{
-      for(var i of alkali){
-        this.element_type[i-1]="normal"
+      if (e) {
+        for (var i of element_t) {
+          this.element_type[i - 1] = n
+        }
+      } else {
+        for (var i of element_t) {
+          this.element_type[i - 1] = "normal"
+        }
       }
     }
   },
@@ -301,9 +327,9 @@ export default {
       }
     })
   },
-  setting(){
+  setting() {
     router.push({
-      uri: "/pages/chemistry/setting",
+      uri: "/pages/chemistry/setting"
     })
   },
   back() {
@@ -357,7 +383,7 @@ $device-height: 490px, 480px, 520px;
 }
 .elements {
   width: 50px;
-  border-radius: 12px;
+  border-radius: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -368,13 +394,47 @@ $device-height: 490px, 480px, 520px;
   margin-right: 2px;
   margin-top: 2px;
   margin-bottom: 2px;
+  border-color: base.$on-surface;
+  border-width: 1px;
   .normal {
-    color: base.$on-primary;
-    background-color: base.$primary;
+    color: base.$on-surface;
+    background-color: base.$surface;
   }
   .alkali {
     color: base.$on-surface;
     background-color: $alkali;
+  }
+  .alkaline {
+    color: base.$on-surface;
+    background-color: $alkaline;
+  }
+  .noble {
+    color: base.$on-surface;
+    background-color: $noble;
+  }
+  .transition {
+    color: base.$on-surface;
+    background-color: $transition;
+  }
+  .post_transition {
+    color: base.$on-surface;
+    background-color: $poor;
+  }
+  .metalloids {
+    color: base.$on-surface;
+    background-color: $metalloid;
+  }
+  .active_nometals {
+    color: base.$on-surface;
+    background-color: $nonmetal;
+  }
+  .lanthanoid{
+    color: base.$on-surface;
+    background-color: $lanthanoid;
+  }
+  .actinoid{
+    color: base.$on-surface;
+    background-color: $actinoid;
   }
 }
 .table-title {

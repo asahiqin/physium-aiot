@@ -8,7 +8,13 @@ export default {
   },
   chemistry:{
     have_describe: true,
-    alkali: false
+    alkali: true,
+    alkaline: true,
+    noble: true,
+    transition: true,
+    post_transition: true,
+    metalloids: true,
+    active_nometals: true
   },
   onCreate() {
     console.log("app created")

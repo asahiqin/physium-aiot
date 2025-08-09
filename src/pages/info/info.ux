@@ -7,6 +7,10 @@
         <text class="card__title">版本v0.4.0-alpha</text>
         <text class="card__title">该项目基于GPL v2.0开源</text>
       </div>
+      <div class="card">
+        <text class="card__title">branch: main</text>
+        <text class="card__title">last commit:b0193bf</text>
+      </div>
       <div class="divider"></div>
       <text class="title">该项目数据部分来源于Casio的Physium</text>
       <div class="divider"></div>
