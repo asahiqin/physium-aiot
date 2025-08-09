@@ -51,9 +51,7 @@ export default {
     this.name_en = getElement(this.element + "").name
   },
   back() {
-    router.replace({
-      uri: "pages/chemistry/index"
-    })
+    router.back()
   }
 }
 </script>

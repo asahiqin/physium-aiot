@@ -16,8 +16,11 @@
           value="H"
           @click="getElement('1')"
         />
-        <div for="{{ num_array(16) }}" tid="uniqueId">
-          <div class="elements-space"></div>
+        <div for="{{ num_array(16) }}">
+          <input
+            class="elements normal"
+            type="button"
+          />
         </div>
         <input
           if="{{ num_2 != [] }}"
@@ -40,8 +43,11 @@
             @click="getElement($idx + 3)"
           />
         </div>
-        <div for="{{ num_10 }}" tid="uniqueId">
-          <div class="elements-space"></div>
+        <div for="{{ num_10 }}">
+          <input
+            class="elements normal"
+            type="button"
+          />
         </div>
         <div for="{{ num_6 }}">
           <input
@@ -65,8 +71,11 @@
             @click="getElement($idx + 11)"
           />
         </div>
-        <div for="{{ num_10 }}" tid="uniqueId">
-          <div class="elements-space"></div>
+        <div for="{{ num_10 }}">
+          <input
+            class="elements normal"
+            type="button"
+          />
         </div>
         <div for="{{ num_6 }}">
           <input
@@ -205,7 +214,7 @@
         <div class="elements-space describe" style="flex-direction: column">
           <text class="describe">氮族元素</text>
         </div>
-        <div class="elements-space describe" style="flex-direction: column">
+        <div class="elements-spacje describe" style="flex-direction: column">
           <text class="describe">氧族元素</text>
         </div>
         <div class="elements-space describe" style="flex-direction: column">
@@ -214,7 +223,7 @@
         <div class="elements-space describe" style="flex-direction: column"></div>
       </div>
     </scroll>
-    <div class="appBar {{ screen_type }}" style="width: 900px">
+    <div class="appBar {{ screen_type }}" style="width: 1026px">
       <div style="height: 100%; width: 40px"></div>
       <img
         src="/common/back.png"
@@ -242,8 +251,8 @@ export default {
     index: pre_generated_data.index,
     num_2: [],
     num_6: [],
-    num_10: [],
     num_15: [],
+    num_10:[],
     num_18: [],
     screen_type: "",
     element_type: new Array(118).fill("normal"),
@@ -261,6 +270,7 @@ export default {
     if (this.num_2.length == 0) {
       this.num_2 = pre_generated_data.num[0]
       this.num_6 = pre_generated_data.num[1]
+
       this.num_10 = pre_generated_data.num[2]
       this.num_15 = pre_generated_data.num[3]
       this.num_18 = pre_generated_data.num[4]
@@ -283,7 +293,7 @@ export default {
   },
   getElement(element) {
     console.log(element)
-    router.replace({
+    router.push({
       uri: "/pages/chemistry/detail",
       params: {
         element: this.elements_symbol_data[element - 1],
@@ -292,7 +302,7 @@ export default {
     })
   },
   setting(){
-    router.replace({
+    router.push({
       uri: "/pages/chemistry/setting",
     })
   },
@@ -322,7 +332,7 @@ $device-height: 490px, 480px, 520px;
 .appBar {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 1026px;
   padding: 16px 16px 16px 16px;
 
   background-color: base.$primary;
@@ -374,16 +384,19 @@ $device-height: 490px, 480px, 520px;
   font-size: 20px;
 }
 .elements-space {
-  width: 56px;
+  width: 54px;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #e6e0e9;
+  font-size: 18px;
 }
 .describe {
   height: 50px;
+  width: 54px;
   align-items: center;
+  text-align: center;
   color: #e6e0e9;
-
   font-size: 18px;
 }
 .index-true {
@@ -391,13 +404,13 @@ $device-height: 490px, 480px, 520px;
   position: absolute;
   top: 80px;
   left: 0;
-  width: 900px;
+  width: 1026px;
   height: 120px;
   background-color: base.$surface;
 }
 .index-false {
   flex-direction: column;
-  width: 900px;
+  width: 1026px;
   height: 70px;
   position: absolute;
   top: 80px;
@@ -407,7 +420,7 @@ $device-height: 490px, 480px, 520px;
 @each $d in $devices {
   $index: index($devices, $d);
   .content-#{$d}-true {
-    width: 900px;
+    width: 1026px;
     flex-direction: column;
     position: absolute;
     top: 200px;
@@ -415,7 +428,7 @@ $device-height: 490px, 480px, 520px;
     height: nth($device-height, $index) - 200px;
   }
   .content-#{$d}-false {
-    width: 900px;
+    width: 1026px;
     flex-direction: column;
     position: absolute;
     top: 150px;

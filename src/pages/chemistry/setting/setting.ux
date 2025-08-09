@@ -50,9 +50,7 @@ export default {
     this.$app.$def.chemistry.alkali = e.checked
   },
   back() {
-    router.replace({
-      uri: "pages/chemistry/index"
-    })
+    router.back()
   }
 }
 </script>
