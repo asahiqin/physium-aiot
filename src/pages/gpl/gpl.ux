@@ -1,6 +1,13 @@
 <template>
   <div class="gpl-page">
-    <div class="appBar-{{device}}" style="">
+    <scroll scroll-y="true" class="content-{{ device }}">
+      <qrcode
+        value="https://ww.gnu.org/licenses/old-licenses/gpl-2.0.html"
+        style="color: #141218; background-color: #e6e0e9; margin: 10px 10px 10px 10px"
+      ></qrcode>
+      <text class="title">扫码查看</text>
+    </scroll>
+    <div class="appBar-{{ device }}" style="">
       <img
         src="/common/back.png"
         style="object-fit: cover; height: 40px; width: 40px"
@@ -9,11 +16,6 @@
       <text>GPL License</text>
       <div></div>
     </div>
-    <qrcode
-      value="https://ww.gnu.org/licenses/old-licenses/gpl-2.0.html"
-      style="color: #141218; background-color: #e6e0e9; margin: 10px 10px 10px 10px"
-    ></qrcode>
-    <text class="title">扫码查看</text>
   </div>
 </template>
 
@@ -28,7 +30,7 @@ export default {
   back() {
     router.back()
   },
-  onInit(){
+  onInit() {
     this.device = this.$app.$def.device.device
   }
 }

@@ -1,5 +1,10 @@
 <template>
   <div class="page">
+    <scroll scroll-y="true" class="content-{{ device }}">
+      <div for="{{ type }}" class="card" @click="gotoSubmenu($item.code, $item.chs)">
+        <text class="title">{{ $item.chs }}</text>
+      </div>
+    </scroll>
     <div class="appBar-{{ device }}" style="">
       <img
         src="/common/back.png"
@@ -9,11 +14,6 @@
       <text>物理常数表</text>
       <div></div>
     </div>
-    <scroll scroll-y="true" class="content-{{ device }}">
-      <div for="{{ type }}" class="card" @click="gotoSubmenu($item.code, $item.chs)">
-        <text class="title">{{ $item.chs }}</text>
-      </div>
-    </scroll>
   </div>
 </template>
 

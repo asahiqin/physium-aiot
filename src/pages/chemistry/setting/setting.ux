@@ -1,14 +1,5 @@
 <template>
   <div class="page">
-    <div class="appBar-{{ device }}" style="">
-      <img
-        src="/common/back.png"
-        style="object-fit: cover; height: 40px; width: 40px"
-        @click="back"
-      />
-      <text>元素周期表设置</text>
-      <div></div>
-    </div>
     <scroll scroll-y="true" class="content-{{ device }}">
       <div class="notice-{{ screen_type }}">
         <text class="title">启用描述</text>
@@ -20,6 +11,15 @@
       </div>
       <div style="width: 100%; height: 40px"></div>
     </scroll>
+    <div class="appBar-{{ device }}" style="">
+      <img
+        src="/common/back.png"
+        style="object-fit: cover; height: 40px; width: 40px"
+        @click="back"
+      />
+      <text>元素周期表设置</text>
+      <div></div>
+    </div>
   </div>
 </template>
 
@@ -50,7 +50,9 @@ export default {
     this.$app.$def.chemistry.alkali = e.checked
   },
   back() {
-    router.back()
+    router.replace({
+      uri: "pages/chemistry/index"
+    })
   }
 }
 </script>

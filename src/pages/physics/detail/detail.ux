@@ -1,14 +1,5 @@
 <template>
   <div class="page">
-    <div class="appBar-{{ device }}" style="">
-      <img
-        src="/common/back.png"
-        style="object-fit: cover; height: 40px; width: 40px"
-        @click="back"
-      />
-      <text>信息</text>
-      <div></div>
-    </div>
     <scroll scroll-y="true" class="content-{{ device }}">
       <div class="notice-{{ screen_type }}">
         <text class="title">{{ describe }}</text>
@@ -28,6 +19,15 @@
       </div>
       <div style="width: 100%; height: 40px"></div>
     </scroll>
+    <div class="appBar-{{ device }}" style="">
+      <img
+        src="/common/back.png"
+        style="object-fit: cover; height: 40px; width: 40px"
+        @click="back"
+      />
+      <text>信息</text>
+      <div></div>
+    </div>
   </div>
 </template>
 

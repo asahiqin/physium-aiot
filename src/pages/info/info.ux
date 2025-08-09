@@ -1,14 +1,5 @@
 <template>
   <div class="info-page">
-    <div class="appBar-{{ device }}" style="">
-      <img
-        src="/common/back.png"
-        style="object-fit: cover; height: 40px; width: 40px"
-        @click="back"
-      />
-      <text>更多信息</text>
-      <div></div>
-    </div>
     <scroll scroll-y="true" class="content-{{ device }}">
       <div style="width: 100%; height: 10px"></div>
       <div class="card">
@@ -37,6 +28,15 @@
       <text class="title" @click="gotoGPL">查看GPL v2.0 英文副本</text>
       <div style="width: 100%; height: 40px"></div>
     </scroll>
+    <div class="appBar-{{ device }}" style="">
+      <img
+        src="/common/back.png"
+        style="object-fit: cover; height: 40px; width: 40px"
+        @click="back"
+      />
+      <text>更多信息</text>
+      <div></div>
+    </div>
   </div>
 </template>
 
