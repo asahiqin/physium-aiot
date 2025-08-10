@@ -12,3 +12,4 @@
 /temp_bak
 yarn.lock
 src/.DS_Store
+.ropeproject

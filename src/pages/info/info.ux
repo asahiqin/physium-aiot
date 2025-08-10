@@ -4,12 +4,13 @@
       <div style="width: 100%; height: 10px"></div>
       <div class="card">
         <text class="card__title">开发者:AsahiQin</text>
-        <text class="card__title">版本v0.4.0-alpha</text>
-        <text class="card__title">该项目基于GPL v2.0开源</text>
+        <text class="card__title">协助测试:equalD</text>
       </div>
       <div class="card">
-        <text class="card__title">branch: main</text>
-        <text class="card__title">last commit:b0193bf</text>
+        <text class="card__title">版本v0.4.0-alpha</text>
+        <text class="card__title">该项目基于GPL v2.0开源</text>
+        <text class="card__title">branch: {{branch}}</text>
+        <text class="card__title">last commit: {{last_commit}}</text>
       </div>
       <div class="divider"></div>
       <text class="title">该项目数据部分来源于Casio的Physium</text>
@@ -46,10 +47,13 @@
 
 <script>
 import router from "@system.router"
+import git_info from "../../git.json"
 export default {
   private: {
     screen: "",
-    device: ""
+    device: "",
+    branch: git_info.branch,
+    last_commit: git_info.last_commit
   },
   back() {
     router.back()

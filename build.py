@@ -8,7 +8,8 @@ def create_bak():
     copyfile("./src/manifest.json", "./temp_bak/manifest.json")
     copyfile("./src/common/logo.png", "./temp_bak/logo.png")
     copyfile("./src/common/logo_9.png", "./temp_bak/logo_9.png")
-    
+    copyfile("./src/git.json", "./temp_bak/git.json")
+
 def prepare_release():
     try:
         os.mkdir("./release")
@@ -19,12 +20,19 @@ def restore_bak():
     copyfile("./temp_bak/manifest.json", "./src/manifest.json")
     copyfile("./temp_bak/logo.png", "./src/common/logo.png")
     copyfile( "./temp_bak/logo_9.png", "./src/common/logo_9.png")
+    copyfile("./temp_bak/git.json","./src/git.json")
     rmtree("./temp_bak")
 
 def get_manifest_data():
     global Manifest
     with open("./temp_bak/manifest.json", "r") as f:
         Manifest = json.load(f)
+
+def update_git_info():
+    last_commit = os.popen("git rev-parse --short HEAD").read()
+    branch = os.popen("git branch --show-current").read()
+    with open("./src/git.json", "w") as f:
+        json.dump({"last_commit": last_commit, "branch": branch}, f)
 
 def build_9pro():
     global Manifest
@@ -50,26 +58,29 @@ def build_9():
     release_code = os.system("npm run release")
     print("[INFO] Release exit code", release_code)
     os.system("cp ./dist/*.rpk ./release/")
-    
+
 
 if __name__ == "__main__":
     # Prepare release environment
     prepare_release()
-    
+
     # Create backup
     create_bak()
 
     # Loading manifest data
     get_manifest_data()
-    
+
+    # Update git info
+    update_git_info()
+
     # Build 9 pro band
     print("[INFO] Buil 9pro now")
     build_9pro()
-    
+
     # Build 9 band
     print("[INFO] Buil 9 now")
     build_9()
-    
+
     # Restore backup
     restore_bak()
     print("[INFO] Finished")
