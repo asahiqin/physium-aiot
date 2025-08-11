@@ -8,7 +8,7 @@
  */
 
 import elementsOriginalData from "./elements.json";
-
+import preGeneratedData from "./pre_generated_data.json"
 // interface ErrorResult {
 //     error;
 //     message;
@@ -64,7 +64,10 @@ const elements = elementsData.map((element, index) => {
         number: index + 1
     };
 });
-
+function getElementBySymbol(symbol){
+    const index = preGeneratedData.symbols.indexOf(symbol)
+    return elementsData[index]
+}
 function getElement(searchTerm) {
     searchTerm = searchTerm.toLowerCase().trim();
     let mole = 1;
@@ -249,4 +252,4 @@ function isErrorResult(result){
     return !!(result ).error;
 }
 
-export { elements, getCompound, getElement, isErrorResult };
+export { elements, getCompound, getElement, isErrorResult, getElementBySymbol };

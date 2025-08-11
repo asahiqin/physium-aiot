@@ -24,7 +24,7 @@
 
 <script>
 import router from "@system.router"
-import {getElement} from "../../../elements/elements.js"
+import {getElementBySymbol} from "../../../elements/elements.js"
 export default {
   private: {
     symbol: "",
@@ -43,12 +43,13 @@ export default {
   },
   onShow() {
     console.log("[PHYSIUM]", this.element + "")
-    console.log(getElement("4").name_chs)
+    const element = getElementBySymbol(this.element)
+    console.log(element)
     this.e_index = this.index
     this.symbol = this.element
-    this.mass = getElement(this.element + "").mass.toString()
-    this.name_chs = getElement(this.element + "").name_chs
-    this.name_en = getElement(this.element + "").name
+    this.mass = element.mass.toString()
+    this.name_chs = element.name_chs
+    this.name_en = element.name
   },
   back() {
     router.back()
