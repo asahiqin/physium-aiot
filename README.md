@@ -7,7 +7,7 @@
   <p align="center">
     一个适用于Vela的化学与物理小工具	
     <br />
-    <a href="https://github.com/asahiqin/physium-aiot/releases/tag/v0.4.0-alpha"><strong>下载测试版（v0.4.0-alpha）</strong></a>
+    <a href="https://github.com/asahiqin/physium-aiot/releases/tag/v0.4.1-alpha"><strong>下载测试版（v0.4.1-alpha）</strong></a>
     <br />
     <br />
   </p>
