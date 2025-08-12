@@ -21,22 +21,6 @@ export default {
   onCreate() {
     console.log("app created")
     var screen_type, height, type
-    var rotate=""
-    storage.get({
-      key: "rotate",
-      default: "off",
-      success: function (data) {
-        console.log("handling success", data)
-        storage = data
-      },
-      fail: function (data, code) {
-        console.log(`handling fail, code = ${code}`)
-      }
-    })
-    console.log(rotate)
-    if(rotate == "on"){
-      this.chemistry.rotate = true
-    }
     device.getInfo({
       success: function (ret) {
         console.log(ret.screenWidth)

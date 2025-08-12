@@ -34,6 +34,7 @@
 
 <script>
 import router from "@system.router"
+import storage from "@system.storage"
 export default {
   private: {
     loading: "",
@@ -44,6 +45,18 @@ export default {
   onShow() {
     this.loading = ""
     this.elements_button = true
+    var rotate=""
+    storage.get({
+      key: "rotate",
+      default: "off",
+      success: this.rotate_change,
+      fail: function (data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
+  },
+  rotate_change(data){
+    this.$app.$def.chemistry.rotate = data
   },
   onInit() {
     this.device_type = this.$app.$def.device.device

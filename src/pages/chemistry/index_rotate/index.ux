@@ -470,7 +470,7 @@ $device-width: 192px, 336px, 212px;
     flex-direction: row;
     position: absolute;
     top: 80px;
-    left: 70px;
+    left: 80px;
     height: 1026px;
     width: nth($device-width, $index) - 70px;
   }
