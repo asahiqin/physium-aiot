@@ -7,12 +7,7 @@
     >
       正在渲染中,请耐心等待
     </text>
-    <scroll
-      scroll-x="{{ true }}"
-      id="elements_table"
-      class="content-{{ device }}"
-      else
-    >
+    <scroll scroll-x="{{ true }}" id="elements_table" class="content-{{ device }}" else>
       <!--第一周期-->
       <div class="elements-line">
         <div class="elements-space">
@@ -466,6 +461,7 @@ $device-width: 192px, 336px, 212px;
   transform: rotate(270deg);
   transform-origin: 27px 27px;
   color: #e6e0e9;
+  background-color: base.$surface;
   font-size: 18px;
 }
 @each $d in $devices {
@@ -488,6 +484,8 @@ $device-width: 192px, 336px, 212px;
     height: 1026px;
     width: 90px;
     margin-left: 2px;
+
+    background-color: base.$surface;
   }
 }
 </style>
