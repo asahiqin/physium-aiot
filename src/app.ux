@@ -1,13 +1,15 @@
 <script>
 import device from "@system.device"
+import storage from "@system.storage"
 export default {
   device: {
-    screen_type:"",
+    screen_type: "",
     height: 0,
     device: ""
   },
-  chemistry:{
+  chemistry: {
     have_describe: true,
+    rotate: false,
     alkali: true,
     alkaline: true,
     noble: true,
@@ -18,21 +20,37 @@ export default {
   },
   onCreate() {
     console.log("app created")
-    var screen_type,height,type
+    var screen_type, height, type
+    var rotate=""
+    storage.get({
+      key: "rotate",
+      default: "off",
+      success: function (data) {
+        console.log("handling success", data)
+        storage = data
+      },
+      fail: function (data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
+    console.log(rotate)
+    if(rotate == "on"){
+      this.chemistry.rotate = true
+    }
     device.getInfo({
       success: function (ret) {
         console.log(ret.screenWidth)
         height = ret.screenHeight
-        if(ret.screenWidth < 250){
+        if (ret.screenWidth < 250) {
           screen_type = "pill"
-        }else{
+        } else {
           screen_type = "rect"
         }
-        if(ret.screenWidth == 212){
+        if (ret.screenWidth == 212) {
           type = "band10"
-        }else if(ret.screenWidth == 192){
+        } else if (ret.screenWidth == 192) {
           type = "band9"
-        }else if(ret.screenWidth == 336){
+        } else if (ret.screenWidth == 336) {
           type = "band9p"
         }
       }
@@ -42,9 +60,7 @@ export default {
     this.device.screen_type = screen_type
     this.device.device = type
   },
-  onInit(){
-    
-  },
+  onInit() {},
   onDestroy() {
     console.log("app destroyed")
   }

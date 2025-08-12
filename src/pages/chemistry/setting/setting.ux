@@ -1,54 +1,58 @@
 <template>
   <div class="page">
     <scroll scroll-y="true" class="content-{{ device }}" scroll-x="true">
-      <div class="notice-{{ screen_type }}">
-        <text class="title">启用描述</text>
+      <div class="notice-pill">
+        <text class="title">启用描述(适用于横向)</text>
         <switch checked="{{ have_describe }}" @change="describe_changd" />
       </div>
+      <div class="notice-pill">
+        <text class="title">(实验)使用横向周期表(重新进入周期表生效)</text>
+        <switch checked="{{ rotate }}" @change="rotate_change" />
+      </div>
       <div class="notice-{{ screen_type }}">
-        <div class="color-{{screen_type}}">
+        <div class="color-{{ screen_type }}">
           <text class="title">显示碱金属</text>
           <div class="alkali"></div>
         </div>
         <switch checked="{{ alkali }}" @change="alkali_changd" />
       </div>
       <div class="notice-{{ screen_type }}">
-        <div class="color-{{screen_type}}">
+        <div class="color-{{ screen_type }}">
           <text class="title">显示碱土金属</text>
           <div class="alkaline"></div>
         </div>
         <switch checked="{{ alkaline }}" @change="alkaline_changd" />
       </div>
       <div class="notice-{{ screen_type }}">
-        <div class="color-{{screen_type}}">
+        <div class="color-{{ screen_type }}">
           <text class="title">显示过渡金属</text>
           <div class="transition"></div>
         </div>
         <switch checked="{{ transition }}" @change="transition_changd" />
       </div>
       <div class="notice-{{ screen_type }}">
-        <div class="color-{{screen_type}}">
+        <div class="color-{{ screen_type }}">
           <text class="title">显示贫金属</text>
           <div class="poor"></div>
         </div>
         <switch checked="{{ post_transition }}" @change="post_transition_changd" />
       </div>
       <div class="notice-{{ screen_type }}">
-        <div class="color-{{screen_type}}">
+        <div class="color-{{ screen_type }}">
           <text class="title">显示类金属</text>
           <div class="metalloid"></div>
         </div>
         <switch checked="{{ metalloids }}" @change="metalloids_changd" />
       </div>
       <div class="notice-{{ screen_type }}">
-        <div class="color-{{screen_type}}">
+        <div class="color-{{ screen_type }}">
           <text class="title">显示活泼非金属</text>
           <div class="nonmetal"></div>
         </div>
         <switch checked="{{ active_nometals }}" @change="active_nometals_changd" />
       </div>
       <div class="notice-{{ screen_type }}">
-        <div class="color-{{screen_type}}">
+        <div class="color-{{ screen_type }}">
           <text class="title">显示稀有气体</text>
           <div class="noble"></div>
         </div>
@@ -66,6 +70,7 @@
 
 <script>
 import router from "@system.router"
+import storage from "@system.storage"
 export default {
   private: {
     screen_type: "",
@@ -95,6 +100,24 @@ export default {
     this.have_describe = this.$app.$def.chemistry.have_describe
     this.screen_type = this.$app.$def.device.screen_type
     this.device = this.$app.$def.device.device
+    this.rotate = this.$app.$def.chemistry.rotate
+  },
+  rotate_change(e) {
+    this.$app.$def.chemistry.rotate = e.checked
+    let value = "off"
+    if (e.checked) {
+      value = "on"
+    }
+    storage.set({
+      key: "rotate",
+      value: value,
+      success: function (data) {
+        console.log("handling success", data)
+      },
+      fail: function (data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
   },
   describe_changd(e) {
     this.$app.$def.chemistry.have_describe = e.checked
@@ -156,11 +179,11 @@ $colors: #6c3b01, #846011, #402c17, #732e4c, #711019, #003666, #015146, #3e6418,
 .latex {
   object-fit: cover;
 }
-.color-rect{
+.color-rect {
   flex-direction: row;
   align-items: flex-start;
 }
-.color-pill{
+.color-pill {
   align-items: flex-start;
   flex-direction: column;
 }

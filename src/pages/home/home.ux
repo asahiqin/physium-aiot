@@ -54,12 +54,17 @@ export default {
   },
   gotoElementsTable() {
     this.loading = "正在加载,请稍后"
-
     if (this.elements_button) {
       this.elements_button = false
-      router.push({
-        uri: "pages/chemistry/index"
-      })
+      if (this.$app.$def.chemistry.rotate) {
+        router.push({
+          uri: "pages/chemistry/index_rotate"
+        })
+      } else {
+        router.push({
+          uri: "pages/chemistry/index"
+        })
+      }
     }
   },
   gotoInfoPage() {
