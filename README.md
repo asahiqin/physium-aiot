@@ -7,7 +7,7 @@
   <p align="center">
     一个适用于Vela的化学与物理小工具	
     <br />
-    <a href="https://github.com/asahiqin/physium-aiot/releases/tag/v0.4.1-alpha"><strong>下载测试版（v0.4.1-alpha）</strong></a>
+    <a href="https://github.com/asahiqin/physium-aiot/releases/tag/v0.5.0-alpha"><strong>下载测试版（v0.5.0-alpha）</strong></a>
     <br />
     <br />
   </p>
@@ -26,6 +26,7 @@
 - [x] 化学分子式计算
 - [x] 物理常数表
 - [x] 化学元素周期表显示金属等分类
+- [x] 横向化学周期表
 - [ ] 化学元素检索
 - [ ] 物理常数简介
 

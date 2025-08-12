@@ -56,7 +56,11 @@ export default {
     })
   },
   rotate_change(data){
-    this.$app.$def.chemistry.rotate = data
+    var value = false
+    if (data == "on") {
+      value = true
+    }
+    this.$app.$def.chemistry.rotate = value
   },
   onInit() {
     this.device_type = this.$app.$def.device.device
