@@ -61,6 +61,20 @@ export default {
         console.log(`handling fail, code = ${code}`)
       }
     })
+    storage.get({
+      key: "elements_rotate",
+      success: this.handle_rotate,
+      fail: function (data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
+  },
+  handle_rotate(data){
+    var value = false
+    if (data == "on") {
+      value = true
+    }
+    this.$app.$def.chemistry.elements_rotate = value
   },
   rotate_change(data) {
     var value = false

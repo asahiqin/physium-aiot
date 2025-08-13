@@ -3,12 +3,12 @@
     <scroll scroll-x="{{ true }}" id="elements_table" class="content-{{ device }}"  if="{{ num_2.length != 0 }}">
       <!--第一周期-->
       <div class="elements-line">
-        <div class="elements-space">
+        <div class="elements-space {{rotate}}">
           <text class="table-title">1</text>
         </div>
         <input
           if="{{ num_2 != [] }}"
-          class="elements {{ element_type[0] }}"
+          class="elements {{rotate}} {{ element_type[0] }}"
           type="button"
           value="H"
           @click="getElement('1')"
@@ -18,7 +18,7 @@
         </div>
         <input
           if="{{ num_2 != [] }}"
-          class="elements {{ element_type[1] }}"
+          class="elements {{rotate}} {{ element_type[1] }}"
           type="button"
           value="He"
           @click="getElement('2')"
@@ -26,12 +26,12 @@
       </div>
       <!--第二周期-->
       <div class="elements-line">
-        <div class="elements-space">
+        <div class="elements-space {{rotate}}">
           <text class="table-title">2</text>
         </div>
         <div for="{{ num_2 }}">
           <input
-            class="elements {{ element_type[$idx+2] }}"
+            class="elements {{rotate}} {{ element_type[$idx+2] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+2] }}"
             @click="getElement($idx + 3)"
@@ -42,7 +42,7 @@
         </div>
         <div for="{{ num_6 }}">
           <input
-            class="elements {{ element_type[$idx+4] }}"
+            class="elements {{rotate}} {{ element_type[$idx+4] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+4] }}"
             @click="getElement($idx + 5)"
@@ -51,12 +51,12 @@
       </div>
       <!--第三周期-->
       <div class="elements-line">
-        <div class="elements-space">
+        <div class="elements-space {{rotate}}">
           <text class="table-title">3</text>
         </div>
         <div for="{{ num_2 }}">
           <input
-            class="elements {{ element_type[$idx+10] }}"
+            class="elements {{rotate}} {{ element_type[$idx+10] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+10] }}"
             @click="getElement($idx + 11)"
@@ -67,7 +67,7 @@
         </div>
         <div for="{{ num_6 }}">
           <input
-            class="elements {{ element_type[$idx+12] }}"
+            class="elements {{rotate}} {{ element_type[$idx+12] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+12] }}"
             @click="getElement($idx + 13)"
@@ -76,12 +76,12 @@
       </div>
       <!--第四周期-->
       <div class="elements-line">
-        <div class="elements-space">
+        <div class="elements-space {{rotate}}">
           <text class="table-title">4</text>
         </div>
         <div for="{{ num_18 }}">
           <input
-            class="elements {{ element_type[$idx+18] }}"
+            class="elements {{rotate}} {{ element_type[$idx+18] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+18] }}"
             @click="getElement($idx + 19)"
@@ -90,12 +90,12 @@
       </div>
       <!--第五周期-->
       <div class="elements-line">
-        <div class="elements-space">
+        <div class="elements-space  {{rotate}}">
           <text class="table-title">5</text>
         </div>
         <div for="{{ num_18 }}">
           <input
-            class="elements {{ element_type[$idx+36] }}"
+            class="elements {{rotate}} {{ element_type[$idx+36] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+36] }}"
             @click="getElement($idx + 37)"
@@ -104,21 +104,21 @@
       </div>
       <!--第六周期-->
       <div class="elements-line">
-        <div class="elements-space">
+        <div class="elements-space {{rotate}}">
           <text class="table-title">6</text>
         </div>
         <div for="{{ num_2 }}">
           <input
-            class="elements {{ element_type[$idx+54] }}"
+            class="elements {{rotate}} {{ element_type[$idx+54] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+54] }}"
             @click="getElement($idx + 55)"
           />
         </div>
-        <input class="elements lanthanoid" type="button" value="镧系" />
+        <input class="elements {{rotate}} lanthanoid" type="button" value="镧系" />
         <div for="{{ num_15 }}">
           <input
-            class="elements {{ element_type[$idx+71] }}"
+            class="elements {{rotate}} {{ element_type[$idx+71] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+71] }}"
             @click="getElement($idx + 72)"
@@ -127,21 +127,21 @@
       </div>
       <!--第七周期-->
       <div class="elements-line">
-        <div class="elements-space">
+        <div class="elements-space {{rotate}}">
           <text class="table-title">7</text>
         </div>
         <div for="{{ num_2 }}">
           <input
-            class="elements {{ element_type[$idx+86] }}"
+            class="elements {{rotate}} {{ element_type[$idx+86] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+86] }}"
             @click="getElement($idx + 87)"
           />
         </div>
-        <input class="elements actinoid" type="button" value="锕系" />
+        <input class="elements {{rotate}} actinoid" type="button" value="锕系" />
         <div for="{{ num_15 }}">
           <input
-            class="elements {{ element_type[$idx+103] }}"
+            class="elements {{rotate}} {{ element_type[$idx+103] }}"
             type="button"
             value="{{ elements_symbol_data[$idx+103] }}"
             @click="getElement($idx + 104)"
@@ -153,11 +153,11 @@
       <!--镧系-->
       <div class="elements-line">
         <div class="elements-space">
-          <text class="title">镧系</text>
+          <text class="title {{ rotate }}" style="height: 50px; width: 50px">镧系</text>
         </div>
         <div for="{{ num_15 }}">
           <input
-            class="elements lanthanoid"
+            class="elements {{rotate}} lanthanoid"
             type="button"
             value="{{ elements_symbol_data[$idx+56] }}"
             @click="getElement($idx + 57)"
@@ -167,17 +167,18 @@
       <!--锕系-->
       <div class="elements-line">
         <div class="elements-space">
-          <text class="title">锕系</text>
+          <text class="title {{ rotate }}" style="height: 50px; width: 50px">锕系</text>
         </div>
         <div for="{{ num_15 }}">
           <input
-            class="elements actinoid"
+            class="elements {{rotate}} actinoid"
             type="button"
             value="{{ elements_symbol_data[$idx+88] }}"
             @click="getElement($idx + 89)"
           />
         </div>
       </div>
+      <div style="height:100%; width:40px"></div>
     </scroll>
 
     <scroll class="index-{{ device }}" scroll-y="true">
@@ -232,12 +233,16 @@ export default {
     screen_type: "",
     element_type: new Array(118).fill("normal"),
     device: "",
-    have_describe: false
+    have_describe: false,
+    rotate: ""
   },
   onInit() {
     this.screen_type = this.$app.$def.device.screen_type
-
     this.device = this.$app.$def.device.device
+    console.log(this.$app.$def.chemistry.elements_rotate)
+    if(this.$app.$def.chemistry.elements_rotate){
+      this.rotate = "rotate"
+    }
   },
   onShow() {
     this.have_describe = this.$app.$def.chemistry.have_describe
@@ -376,7 +381,7 @@ $device-width: 192px, 336px, 212px;
 }
 .rotate {
   transform: rotate(270deg);
-  transform-origin: bottom right;
+  transform-origin: 25px 25px;
 }
 .elements {
   height: 50px;
@@ -472,7 +477,7 @@ $device-width: 192px, 336px, 212px;
     top: 80px;
     left: 90px;
     height: 1026px;
-    width: nth($device-width, $index) - 70px;
+    width: nth($device-width, $index) - 90px;
   }
   .index-#{$d} {
     flex-direction: row;

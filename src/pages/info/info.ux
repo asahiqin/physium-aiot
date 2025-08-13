@@ -19,7 +19,7 @@
         <text class="card__title">协助测试:equalD</text>
       </div>
       <div class="card">
-        <text class="card__title">版本v0.5.0-alpha</text>
+        <text class="card__title">版本v0.5.1-alpha</text>
         <text class="card__title">该项目基于GPL v2.0开源</text>
         <text class="card__title">branch: {{ branch }}</text>
         <text class="card__title">last commit: {{ last_commit }}</text>
