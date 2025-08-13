@@ -1,0 +1,76 @@
+<template>
+  <div class="info-page">
+    <scroll scroll-y="true" class="content-{{ device }}">
+      <div style="width: 100%; height: 10px"></div>
+      <text class="title">欢迎使用Physium(翻到底部是下一页)</text>
+      <text class="title">使用说明:</text>
+      <text class="title">1. 您可以在主页面右上角或顶端查看本项目的详细信息</text>
+      <text class="title">2. 您可以在元素周期表的左上方或左下方(横向)齿轮处更改元素周期表设置</text>
+      <text class="title"></text>
+      <text class="title">其他说明:</text>
+      <text class="title">你会发现,横向周期表的字并没有旋转,这不是bug,而是因为字符旋转性能开销较大,目前作者采用了这种展现形式</text>
+      <text class="title">如果此种形式收到负反馈较多,作者会考虑加上字符旋转的选项</text>
+      <input type="button" class="button" value="下一页" @click="change_router('/pages/intro/feedback')"/>
+    </scroll>
+    <div class="appBar-{{ device }}" style="">
+      <text>介绍 1/2</text>
+      <div></div>
+    </div>
+  </div>
+</template>
+
+<script>
+import router from "@system.router"
+import git_info from "../../../git.json"
+import prompt from "@system.prompt"
+import storage from "@system.storage"
+export default {
+  private: {
+    screen: "",
+    device: "",
+    branch: git_info.branch,
+    last_commit: git_info.last_commit
+  },
+  back() {
+    router.back()
+  },
+  onInit() {
+    this.device = this.$app.$def.device.device
+  },
+  gotoGPL() {
+    router.push({
+      uri: "pages/gpl"
+    })
+  },
+  change_router(uri) {
+    router.replace({
+      uri: uri
+    })
+  }
+}
+</script>
+
+<style lang="scss">
+@use "../../../material/base.scss";
+@import "../../../material/divider.scss";
+@import "../../../material/base.scss";
+@import "../../../material/app_bar.scss";
+@import "../../../material/card.scss";
+.info-page {
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #141218;
+}
+.button {
+  background-color: base.$primary;
+  height: 60px;
+  width: 100%;
+  border-radius: 12px;
+  align-items: center;
+  border: none;
+  font-size: 25px;
+  color: base.$on-primary;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+</style>

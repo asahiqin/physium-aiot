@@ -1,0 +1,87 @@
+<template>
+  <div class="info-page">
+    <scroll scroll-y="true" class="content-{{ device }}">
+      <qrcode value="https://www.bandbbs.cn/resources/3762/" if="{{ device == 'band9p' }}"></qrcode>
+      <qrcode value="https://www.bandbbs.cn/resources/3813/" if="{{ device == 'band9' }}"></qrcode>
+      <text class="title">本项目仍在快速开发阶段,如有bug或新的想法,欢迎在评论区反馈</text>
+      <div style="height: 50px;width:100%"></div>
+      <input type="button" class="button" value="下一页" @click="change_router('/pages/intro/update')" if="{{hide_appbar == 'true'}}"/>
+    </scroll>
+    <div class="appBar-{{ device }}" style="" if="{{hide_appbar == 'true'}}">
+      <text>反馈 2/2</text>
+      <div></div>
+    </div>
+    <div class="appBar-{{ device }}" style="" else>
+        <img src="/common/back.png" class="back-button" @click="back" />
+        <text>反馈</text>
+        <div></div>
+      </div>
+  </div>
+</template>
+
+<script>
+import router from "@system.router"
+import git_info from "../../../git.json"
+import prompt from "@system.prompt"
+import storage from "@system.storage"
+export default {
+  private: {
+    screen: "",
+    device: "",
+    branch: git_info.branch,
+    last_commit: git_info.last_commit,
+    hide_appbar: 'true'
+  },
+  protected:{
+    intro: 'true'
+  },
+  back() {
+    router.back()
+  },
+  onInit() {
+    this.device = this.$app.$def.device.device
+    this.hide_appbar = this.intro
+    console.log(this.hide_appbar)
+  },
+  gotoGPL() {
+    router.push({
+      uri: "pages/gpl"
+    })
+  },
+  change_router(uri) {
+    router.replace({
+      uri: uri
+    })
+  }
+}
+</script>
+
+<style lang="scss">
+@use "../../../material/base.scss";
+@import "../../../material/divider.scss";
+@import "../../../material/base.scss";
+@import "../../../material/app_bar.scss";
+@import "../../../material/card.scss";
+.info-page {
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #141218;
+}
+.button {
+  background-color: base.$primary;
+  height: 60px;
+  width: 90%;
+  border-radius: 12px;
+  width: 100%;
+  align-items: center;
+  border: none;
+  font-size: 25px;
+  color: base.$on-primary;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+qrcode {
+    color: #141218; background-color: #e6e0e9; margin: 10px 10px 10px 10px;
+    height: 150px;width: 150px;
+}
+</style>

@@ -45,7 +45,7 @@ export default {
   onShow() {
     this.loading = ""
     this.elements_button = true
-    var rotate=""
+    var rotate = ""
     storage.get({
       key: "rotate",
       default: "off",
@@ -54,17 +54,40 @@ export default {
         console.log(`handling fail, code = ${code}`)
       }
     })
+    storage.get({
+      key: "version",
+      success: this.handle_version,
+      fail: function (data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
+    })
   },
-  rotate_change(data){
+  rotate_change(data) {
     var value = false
     if (data == "on") {
       value = true
     }
+
     this.$app.$def.chemistry.rotate = value
   },
   onInit() {
+    var first_use = ""
     this.device_type = this.$app.$def.device.device
     console.log(this.$app.$def.device.device)
+  },
+  handle_version(data) {
+    console.log(data)
+    if (data == "") {
+      router.replace({
+        uri: "pages/intro/readme"
+      })
+    } else {
+      if (data != "v0.5.0-alpha") {
+        router.replace({
+          uri: "pages/intro/update"
+        })
+      }
+    }
   },
   back() {
     router.back()

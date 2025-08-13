@@ -68,6 +68,15 @@
       },
       "pages/physics/submenu": {
         "component": "submenu"
+      },
+      "pages/intro/update": {
+        "component": "update"
+      },
+      "pages/intro/feedback": {
+        "component": "feedback"
+      },
+      "pages/intro/readme": {
+        "component": "readme"
       }
     }
   }

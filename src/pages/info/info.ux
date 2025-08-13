@@ -3,14 +3,26 @@
     <scroll scroll-y="true" class="content-{{ device }}">
       <div style="width: 100%; height: 10px"></div>
       <div class="card">
+        <text class="card__title" @click="change_router('/pages/chemistry/setting')">
+          元素周期表设置
+        </text>
+      </div>
+      <div class="card">
+        <text class="card__title" @click="reset_setting">重制所有设置</text>
+      </div>
+      <div class="card">
+        <text class="card__title" @click="feedback">反馈</text>
+      </div>
+      <div class="divider"></div>
+      <div class="card">
         <text class="card__title">开发者:AsahiQin</text>
         <text class="card__title">协助测试:equalD</text>
       </div>
       <div class="card">
         <text class="card__title">版本v0.5.0-alpha</text>
         <text class="card__title">该项目基于GPL v2.0开源</text>
-        <text class="card__title">branch: {{branch}}</text>
-        <text class="card__title">last commit: {{last_commit}}</text>
+        <text class="card__title">branch: {{ branch }}</text>
+        <text class="card__title">last commit: {{ last_commit }}</text>
       </div>
       <div class="divider"></div>
       <text class="title">该项目数据部分来源于Casio的Physium</text>
@@ -30,15 +42,13 @@
         <text class="card__title">MIT License</text>
       </div>
       <div class="divider"></div>
-      <text class="title" @click="gotoGPL">查看GPL v2.0 英文副本</text>
+      <div class="card" @click="gotoGPL">
+        <text class="card__title">查看GPL v2.0 英文副本</text>
+      </div>
       <div style="width: 100%; height: 40px"></div>
     </scroll>
     <div class="appBar-{{ device }}" style="">
-      <img
-        src="/common/back.png"
-        class="back-button"
-        @click="back"
-      />
+      <img src="/common/back.png" class="back-button" @click="back" />
       <text>更多信息</text>
       <div></div>
     </div>
@@ -48,6 +58,8 @@
 <script>
 import router from "@system.router"
 import git_info from "../../git.json"
+import prompt from "@system.prompt"
+import storage from "@system.storage"
 export default {
   private: {
     screen: "",
@@ -64,6 +76,32 @@ export default {
   gotoGPL() {
     router.push({
       uri: "pages/gpl"
+    })
+  },
+  change_router(uri) {
+    router.push({
+      uri: uri
+    })
+  },
+  feedback(){
+    router.push({
+      uri: "/pages/intro/feedback",
+      params: {
+        intro: 'false'
+      }
+    })
+  },
+  reset_setting() {
+    storage.clear({
+      success: function (data) {
+        prompt.showToast({
+          message: "清除成功，退出页面后生效",
+          duration: 1000
+        })
+      },
+      fail: function (data, code) {
+        console.log(`handling fail, code = ${code}`)
+      }
     })
   }
 }
