@@ -6,6 +6,8 @@
       <text class="title">1. 更新了横向元素周期表</text>
       <text class="title">2. 添加了oobe</text>
       <text class="title">3. 添加了反馈入口</text>
+      <text class="title">v0.5.1-alpha</text>
+      <text class="title">1. 添加了旋转元素选项</text>
       <input type="button" class="button" value="完成" @click="finish"/>
     </scroll>
     <div class="appBar-{{ device }}" style="">
@@ -41,7 +43,7 @@ export default {
   finish() {
     storage.set({
       key: "version",
-      value: "v0.5.0-alpha",
+      value: "v0.5.1-alpha",
       success: function (data) {
         console.log("handling success", data)
         router.replace({
