@@ -17,7 +17,7 @@ export default {
     post_transition: true,
     metalloids: true,
     active_nometals: true,
-    elements_rotate: false
+    elements_rotate: true
   },
   onCreate() {
     console.log("app created")

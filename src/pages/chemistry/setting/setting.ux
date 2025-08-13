@@ -12,7 +12,7 @@
       <div class="notice-pill">
         <text class="title">(实验)横向周期表中,同时旋转化学元素符号</text>
         <text class="title">(重新进入周期表生效)</text>
-        <text class="title">注:此项可能会导致手环卡顿,也肯能会对手环造成损伤</text>
+        <text class="title">注:此项可能会导致手环卡顿,也可能会对手环造成损伤</text>
         <switch checked="{{ elements_rotate }}" @change="elements_rotate_change" />
       </div>
       <div class="notice-{{ screen_type }}">

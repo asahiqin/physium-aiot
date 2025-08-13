@@ -70,9 +70,9 @@ export default {
     })
   },
   handle_rotate(data){
-    var value = false
-    if (data == "on") {
-      value = true
+    var value = true
+    if (data == "off") {
+      value = false
     }
     this.$app.$def.chemistry.elements_rotate = value
   },
