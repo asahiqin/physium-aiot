@@ -6,10 +6,7 @@
       <text class="title">使用说明:</text>
       <text class="title">1. 您可以在主页面右上角或顶端查看本项目的详细信息</text>
       <text class="title">2. 您可以在元素周期表的左上方或左下方(横向)齿轮处更改元素周期表设置</text>
-      <text class="title"></text>
-      <text class="title">其他说明:</text>
-      <text class="title">你会发现,横向周期表的字并没有旋转,这不是bug,而是因为字符旋转性能开销较大,目前作者采用了这种展现形式</text>
-      <text class="title">如果此种形式收到负反馈较多,作者会考虑加上字符旋转的选项</text>
+      <text class="title">3. 您也可以在详细信息中找到元素周期表设置</text>
       <input type="button" class="button" value="下一页" @click="change_router('/pages/intro/feedback')"/>
     </scroll>
     <div class="appBar-{{ device }}" style="">

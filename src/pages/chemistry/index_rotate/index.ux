@@ -2,12 +2,13 @@
   <div class="index-page">
     <scroll
       scroll-y="{{ true }}"
+      scroll-x="{{ true }}"
       id="elements_table"
-      class="content-{{ device }}"
+      class="content-{{ device }}-{{ rotate }}"
       if="{{ num_2.length != 0 }}"
     >
-      <div style="flex-direction: row; width: 100%; height: 1026px">
-        <div class="elements-line" style="width: 90px">
+      <div style="flex-direction: row; width: {{ width }}; height: 1026px">
+        <div class="elements-line" style="width: 45px">
           <div class="elements-space" style="flex-direction: column" @click="setting">
             <image
               src="../../../common/setting.png"
@@ -17,200 +18,216 @@
           <div for="{{ num_18 }}" tid="uniqueId">
             <div class="elements-index">
               <text class="table-title">{{ index[$idx] }}</text>
-              <text class="table-title">{{ $idx + 1 }}</text>
             </div>
           </div>
         </div>
         <!--第一周期-->
         <div class="elements-line" if="{{ active[0]==1 }}">
-          <div class="elements-space {{ rotate }}">
+          <div class="elements-space {{ elements_rotate }}">
             <text class="table-title">1</text>
           </div>
-          <input
+          <div
             if="{{ num_2 != [] }}"
-            class="elements {{ rotate }} {{ element_type[0] }}"
-            type="button"
-            value="H"
+            class="elements {{ elements_rotate }} {{ element_type[0] }}"
             @click="getElement('1')"
-          />
+          >
+            <text>H</text>
+          </div>
           <div for="{{ num_array(16) }}">
             <div class="elements-space"></div>
           </div>
-          <input
+          <div
             if="{{ num_2 != [] }}"
-            class="elements {{ rotate }} {{ element_type[1] }}"
-            type="button"
-            value="He"
+            class="elements {{ elements_rotate }} {{ element_type[1] }}"
             @click="getElement('2')"
-          />
+          >
+            <text>He</text>
+          </div>
         </div>
         <!--第二周期-->
         <div class="elements-line" if="{{ active[1]==1 }}">
-          <div class="elements-space {{ rotate }}">
+          <div class="elements-space {{ elements_rotate }}">
             <text class="table-title">2</text>
           </div>
           <div for="{{ num_2 }}">
-            <input
-              class="elements {{ rotate }} {{ element_type[$idx+2] }}"
-              type="button"
-              value="{{ elements_symbol_data[$idx+2] }}"
+            <div
+              if="{{ num_2 != [] }}"
+              class="elements {{ elements_rotate }} {{ element_type[$idx+2] }}"
               @click="getElement($idx + 3)"
-            />
+            >
+              <text>{{ elements_symbol_data[$idx + 2] }}</text>
+            </div>
           </div>
           <div for="{{ num_10 }}">
             <div class="elements-space"></div>
           </div>
           <div for="{{ num_6 }}">
-            <input
-              class="elements {{ rotate }} {{ element_type[$idx+4] }}"
-              type="button"
-              value="{{ elements_symbol_data[$idx+4] }}"
+            <div
+              if="{{ num_2 != [] }}"
+              class="elements {{ elements_rotate }} {{ element_type[$idx+4] }}"
               @click="getElement($idx + 5)"
-            />
+            >
+              <text>{{ elements_symbol_data[$idx + 4] }}</text>
+            </div>
           </div>
         </div>
         <!--第三周期-->
         <div class="elements-line" if="{{ active[2]==1 }}">
-          <div class="elements-space {{ rotate }}">
+          <div class="elements-space {{ elements_rotate }}">
             <text class="table-title">3</text>
           </div>
           <div for="{{ num_2 }}">
-            <input
-              class="elements {{ rotate }} {{ element_type[$idx+10] }}"
-              type="button"
-              value="{{ elements_symbol_data[$idx+10] }}"
+            <div
+              if="{{ num_2 != [] }}"
+              class="elements {{ elements_rotate }} {{ element_type[$idx+10] }}"
               @click="getElement($idx + 11)"
-            />
+            >
+              <text>{{ elements_symbol_data[$idx + 10] }}</text>
+            </div>
           </div>
           <div for="{{ num_10 }}">
             <div class="elements-space"></div>
           </div>
           <div for="{{ num_6 }}">
-            <input
-              class="elements {{ rotate }} {{ element_type[$idx+12] }}"
-              type="button"
-              value="{{ elements_symbol_data[$idx+12] }}"
+            <div
+              if="{{ num_2 != [] }}"
+              class="elements {{ elements_rotate }} {{ element_type[$idx+12] }}"
               @click="getElement($idx + 13)"
-            />
+            >
+              <text>{{ elements_symbol_data[$idx + 12] }}</text>
+            </div>
           </div>
         </div>
         <!--第四周期-->
         <div class="elements-line" if="{{ active[3]==1 }}">
-          <div class="elements-space {{ rotate }}">
+          <div class="elements-space {{ elements_rotate }}">
             <text class="table-title">4</text>
           </div>
           <div for="{{ num_18 }}">
-            <input
-              class="elements {{ rotate }} {{ element_type[$idx+18] }}"
-              type="button"
-              value="{{ elements_symbol_data[$idx+18] }}"
+            <div
+              if="{{ num_2 != [] }}"
+              class="elements {{ elements_rotate }} {{ element_type[$idx+18] }}"
               @click="getElement($idx + 19)"
-            />
+            >
+              <text>{{ elements_symbol_data[$idx + 18] }}</text>
+            </div>
           </div>
         </div>
         <!--第五周期-->
         <div class="elements-line" if="{{ active[4]==1 }}">
-          <div class="elements-space  {{ rotate }}">
+          <div class="elements-space  {{ elements_rotate }}">
             <text class="table-title">5</text>
           </div>
           <div for="{{ num_18 }}">
-            <input
-              class="elements {{ rotate }} {{ element_type[$idx+36] }}"
-              type="button"
-              value="{{ elements_symbol_data[$idx+36] }}"
+            <div
+              if="{{ num_2 != [] }}"
+              class="elements {{ elements_rotate }} {{ element_type[$idx+36] }}"
               @click="getElement($idx + 37)"
-            />
+            >
+              <text>{{ elements_symbol_data[$idx + 36] }}</text>
+            </div>
           </div>
         </div>
         <!--第六周期-->
         <div class="elements-line" if="{{ active[5]==1 }}">
-          <div class="elements-space {{ rotate }}">
+          <div class="elements-space {{ elements_rotate }}">
             <text class="table-title">6</text>
           </div>
           <div for="{{ num_2 }}">
-            <input
-              class="elements {{ rotate }} {{ element_type[$idx+54] }}"
-              type="button"
-              value="{{ elements_symbol_data[$idx+54] }}"
+            <div
+              if="{{ num_2 != [] }}"
+              class="elements {{ elements_rotate }} {{ element_type[$idx+54] }}"
               @click="getElement($idx + 55)"
-            />
+            >
+              <text>{{ elements_symbol_data[$idx + 54] }}</text>
+            </div>
           </div>
-          <input class="elements {{ rotate }} lanthanoid" type="button" value="镧系" />
+          <input class="elements {{ elements_rotate }} lanthanoid" type="button" value="镧系" />
           <div for="{{ num_15 }}">
-            <input
-              class="elements {{ rotate }} {{ element_type[$idx+71] }}"
-              type="button"
-              value="{{ elements_symbol_data[$idx+71] }}"
+            <div
+              if="{{ num_2 != [] }}"
+              class="elements {{ elements_rotate }} {{ element_type[$idx+71] }}"
               @click="getElement($idx + 72)"
-            />
+            >
+              <text>{{ elements_symbol_data[$idx + 71] }}</text>
+            </div>
           </div>
         </div>
         <!--第七周期-->
         <div class="elements-line" if="{{ active[6]==1 }}">
-          <div class="elements-space {{ rotate }}">
+          <div class="elements-space {{ elements_rotate }}">
             <text class="table-title">7</text>
           </div>
           <div for="{{ num_2 }}">
-            <input
-              class="elements {{ rotate }} {{ element_type[$idx+86] }}"
-              type="button"
-              value="{{ elements_symbol_data[$idx+86] }}"
+            <div
+              if="{{ num_2 != [] }}"
+              class="elements {{ elements_rotate }} {{ element_type[$idx+86] }}"
               @click="getElement($idx + 87)"
-            />
+            >
+              <text>{{ elements_symbol_data[$idx + 86] }}</text>
+            </div>
           </div>
-          <input class="elements {{ rotate }} actinoid" type="button" value="锕系" />
+          <input class="elements {{ elements_rotate }} actinoid" type="button" value="锕系" />
           <div for="{{ num_15 }}">
-            <input
-              class="elements {{ rotate }} {{ element_type[$idx+103] }}"
-              type="button"
-              value="{{ elements_symbol_data[$idx+103] }}"
+            <div
+              if="{{ num_2 != [] }}"
+              class="elements {{ elements_rotate }} {{ element_type[$idx+103] }}"
               @click="getElement($idx + 104)"
-            />
+            >
+              <text>{{ elements_symbol_data[$idx + 103] }}</text>
+            </div>
           </div>
         </div>
         <!--镧系-->
         <div class="elements-line" if="{{ active[7]==1 }}">
           <div class="elements-space">
-            <text class="title {{ rotate }}" style="height: 50px; width: 50px">镧系</text>
+            <text class="title {{ elements_rotate }}" style="height: 50px; width: 50px">镧系</text>
           </div>
           <div for="{{ num_15 }}">
-            <input
-              class="elements {{ rotate }} lanthanoid"
-              type="button"
-              value="{{ elements_symbol_data[$idx+56] }}"
+            <div
+              if="{{ num_2 != [] }}"
+              class="elements {{ elements_rotate }} lanthanoid"
               @click="getElement($idx + 57)"
-            />
+            >
+              <text>{{ elements_symbol_data[$idx + 56] }}</text>
+            </div>
           </div>
         </div>
         <!--锕系-->
         <div class="elements-line" if="{{ active[8]==1 }}">
           <div class="elements-space">
-            <text class="title {{ rotate }}" style="height: 50px; width: 50px">锕系</text>
+            <text class="title {{ elements_rotate }}" style="height: 50px; width: 50px">锕系</text>
           </div>
           <div for="{{ num_15 }}">
-            <input
-              class="elements {{ rotate }} actinoid"
-              type="button"
-              value="{{ elements_symbol_data[$idx+88] }}"
+            <div
+              if="{{ num_2 != [] }}"
+              class="elements {{ elements_rotate }} actinoid"
               @click="getElement($idx + 89)"
-            />
+            >
+              <text>{{ elements_symbol_data[$idx + 88] }}</text>
+            </div>
           </div>
         </div>
       </div>
-      <div style="width:100%;height:50px"></div>
+      <div style="width: 100%; height: 50px" if="{{ rotate }}"></div>
     </scroll>
     <text
-      if="{{ num_2.length == 0 || loading}}"
+      if="{{ num_2.length == 0 || loading }}"
       class="title"
       style="font-size: 25px; margin-top: 10px; position: absolute; top: 250px; left: 10px"
     >
       正在渲染中,请耐心等待
     </text>
-    <div class="operate-{{ device }}">
-      <text style="color: #e6e0e9; font-size: 20px">点击调整周期</text>
+    <div class="operate-{{ device }}" if="{{ rotate }}">
       <div>
         <input type="button" value="<" class="button" @click="handle_swipe({direction: 'right'})" />
         <input type="button" value=">" class="button" @click="handle_swipe({direction: 'left'})" />
+      </div>
+    </div>
+    <div class="operate-bottom-{{ device }}" if="{{ rotate }}">
+      <div>
+        <input type="button" value="<" class="button-rotate" @click="scroll_to(100)" />
+        <input type="button" value=">" class="button-rotate" @click="scroll_to(-100)" />
       </div>
     </div>
     <div class="appBar {{ screen_type }}">
@@ -251,22 +268,31 @@ export default {
     element_type: new Array(118).fill("normal"),
     device: "",
     have_describe: false,
-    rotate: "",
+    rotate: true,
+    elements_rotate: "",
     active: new Array(9).fill(0),
-    loading: false
+    loading: false,
+    width: "100%"
+  },
+  scroll_to(x) {
+    this.$element("elements_table").scrollBy({
+      top: x,
+      left: 0,
+      behavior: "instant"
+    })
   },
   onInit() {
     this.screen_type = this.$app.$def.device.screen_type
     this.device = this.$app.$def.device.device
-    console.log(this.$app.$def.chemistry.elements_rotate)
     this.active[0] = 1
     this.active[1] = 1
     if (this.device == "band9p") {
       this.active[2] = 1
       this.active[3] = 1
+      this.active[4] = 1
     }
     if (this.$app.$def.chemistry.elements_rotate) {
-      this.rotate = "rotate"
+      this.elements_rotate = "rotate"
     }
   },
   onShow() {
@@ -328,13 +354,6 @@ export default {
         }
       }
     }
-  },
-  scroll_to() {
-    this.$element("elements_table").scrollTo({
-      top: 1000,
-      left: 0,
-      behavior: "smooth"
-    })
   },
   num_array(count) {
     return new Array(count).fill(0)
@@ -447,6 +466,25 @@ $device-width: 192px, 336px, 212px;
   border-width: 1px;
   background-color: base.$primary;
 }
+.button-rotate {
+  height: 54px;
+  width: 54px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-size: 20px;
+  text-align: center;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-top: 2px;
+  border-color: base.$on-primary;
+  border-width: 1px;
+  background-color: base.$primary;
+  transform: rotate(270deg);
+  transform-origin: 27px 27px;
+}
 .elements {
   height: 50px;
   width: 50px;
@@ -505,6 +543,9 @@ $device-width: 192px, 336px, 212px;
     color: base.$on-surface;
     background-color: $actinoid;
   }
+  text {
+    font-size: 20px;
+  }
 }
 .table-title {
   align-items: center;
@@ -533,24 +574,24 @@ $device-width: 192px, 336px, 212px;
   background-color: base.$surface;
   font-size: 18px;
 }
-@mixin content {
+@mixin content-true {
   flex-direction: column;
   position: absolute;
-  top: 170px;
+  top: 150px;
   left: 0;
   width: 100%;
 }
-.content-band9 {
-  @include content();
-  height: nth($device-height, 1) - 170px;
-}
-.content-band9p {
-  @include content();
-  height: nth($device-height, 2) - 170px;
+@mixin content-false {
+  flex-direction: column;
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  height: 1026px;
+  width: 500px;
 }
 @mixin operate {
   width: 100%;
-  height: 90px;
+  height: 60px;
   position: absolute;
   top: 80px;
   align-items: center;
@@ -558,11 +599,15 @@ $device-width: 192px, 336px, 212px;
   flex-direction: column;
   background-color: base.$surface;
 }
-.operate-band9 {
-  @include operate();
-}
-.operate-band9p {
-  @include operate();
+@mixin operate-bottom {
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: base.$surface;
 }
 @each $d in $devices {
   $index: index($devices, $d);
@@ -576,6 +621,20 @@ $device-width: 192px, 336px, 212px;
     width: 40px;
 
     background-color: base.$surface;
+  }
+  .operate-#{$d} {
+    @include operate();
+  }
+  .operate-bottom-#{$d} {
+    @include operate-bottom();
+  }
+  .content-#{$d}-true {
+    @include content-true();
+    height: nth($device-height, $index) - 200px;
+  }
+  .content-#{$d}-false {
+    @include content-false();
+    width: nth($device-width, $index);
   }
 }
 </style>
