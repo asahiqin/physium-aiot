@@ -7,12 +7,14 @@
   <p align="center">
     一个适用于Vela的化学与物理小工具	
     <br />
-    <a href="https://github.com/asahiqin/physium-aiot/releases/tag/v0.5.0-alpha"><strong>下载测试版（v0.5.0-alpha）</strong></a>
+    <a href="https://github.com/asahiqin/physium-aiot/releases/tag/v0.5.1-alpha"><strong>下载测试版（v0.5.1-alpha）</strong></a>
     <br />
     <br />
   </p>
 
 </p>
+
+# 原作者由于学业问题（进入高三），该项目维护将暂停一年，如果有pull request会查看合并，当然你也可以选择fork来添加剩下的内容或是增加其他设备的支持
 
 ## 简介
 此quickapp受Casio计算器的Physium应用（即「理化」应用）启发，期望在小米手环上实现相关功能，方便查看物理常数、化学元素周期表等数据
