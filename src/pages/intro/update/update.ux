@@ -1,16 +1,14 @@
+<import name="button" src="../../../components/button"></import>
 <import name="appbar" src="../../../components/appbar"></import>
 <template>
   <div class="page">
     <scroll scroll-y="true" class="content-{{ device }}">
       <div style="width: 100%; height: 10px"></div>
-      <text class="title">v0.5.0-alpha</text>
-      <text class="title">1. 更新了横向元素周期表</text>
-      <text class="title">2. 添加了oobe</text>
-      <text class="title">3. 添加了反馈入口</text>
-      <text class="title">v0.5.1-alpha</text>
-      <text class="title">1. 添加了旋转元素选项</text>
-      <text class="title">注：请在设置中更改以启用此项</text>
-      <input type="button" class="button" value="完成" @click="finish"/>
+      <text class="title">v1.0.0-stable</text>
+      <text class="title">1. 优化横向元素周期表</text>
+      <text class="title">2. 更换应用设计</text>
+      <button value="完成" @touch="finish" ></button>
+      <div style="width:100%; height: 30px"></div>
     </scroll>
     <appbar can-not-back="{{true}}" title="更新日志"></appbar>
   </div>
@@ -42,7 +40,7 @@ export default {
   finish() {
     storage.set({
       key: "version",
-      value: "v0.5.1-alpha",
+      value: "v1.0.0-stable",
       success: function (data) {
         console.log("handling success", data)
         router.replace({

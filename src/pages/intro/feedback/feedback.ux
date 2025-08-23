@@ -1,3 +1,4 @@
+<import name="button" src="../../../components/button"></import>
 <import name="appbar" src="../../../components/appbar"></import>
 <template>
   <div class="page">
@@ -6,13 +7,9 @@
       <qrcode value="https://www.bandbbs.cn/resources/3813/" if="{{ device == 'band9' }}"></qrcode>
       <text class="title">本项目仍在快速开发阶段,如有bug或新的想法,欢迎在评论区反馈</text>
       <div style="height: 50px; width: 100%"></div>
-      <input
-        type="button"
-        class="button"
-        value="下一页"
-        @click="change_router('/pages/intro/update')"
-        if="{{ hide_appbar == 'true' }}"
-      />
+      <button value="下一页" @touch="change_router('/pages/intro/update')" if="{{ hide_appbar == 'true' }}"></button>
+
+      <div style="width:100%; height: 30px"></div>
     </scroll>
     <appbar title="反馈 2/2" can-not-back="{{ true }}" if="{{ hide_appbar == 'true' }}"></appbar>
     <appbar title="反馈" else></appbar>

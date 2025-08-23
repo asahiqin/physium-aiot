@@ -1,0 +1,35 @@
+<template>
+  <input type="button" class="button-{{device}}" @click="onclick" @longpress="longpress" value="{{v}}" style="margin-top: 30px"/>
+</template>
+
+<script>
+import router from "@system.router"
+export default {
+  props: ["value"],
+  data: {
+    v: "",
+    status: "",
+    device: ""
+  },
+  onInit() {
+    this.device = this.$app.$def.device.device
+    this.v = this.value
+  },
+  longpress() {
+    this.$emit("more")
+  },
+  onclick() {
+    this.status = ""
+    console.log("touch")
+    this.$emit("touch")
+  }
+}
+</script>
+
+<style lang="scss">
+@import "../material/button.scss";
+@import "../material/base.scss";
+.touch {
+  background-color: #1f1f1f96;
+}
+</style>

@@ -10,12 +10,12 @@
         <text class="title">(实验)使用横向周期表(重新进入周期表生效)</text>
         <switch checked="{{ rotate }}" @change="rotate_change" />
       </div>
-      <div class="notice-pill">
+      <!-- <div class="notice-pill">
         <text class="title">(实验)横向周期表中,同时旋转化学元素符号</text>
         <text class="title">(重新进入周期表生效)</text>
         <text class="title">注:此项可能会导致手环卡顿,也可能会对手环造成损伤</text>
         <switch checked="{{ elements_rotate }}" @change="elements_rotate_change" />
-      </div>
+      </div> -->
       <div class="notice-{{ screen_type }}">
         <div class="color-{{ screen_type }}">
           <text class="title">显示碱金属</text>

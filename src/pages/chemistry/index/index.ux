@@ -221,10 +221,10 @@
           <div class="elements-space describe" style="flex-direction: column"></div>
         </div>
         <div class="elements-space describe" style="flex-direction: column">
-          <text class="describe">氮族元素</text>
+          <text class="describe">氮族</text>
         </div>
         <div class="elements-spacje describe" style="flex-direction: column">
-          <text class="describe">氧族元素</text>
+          <text class="describe">氧族</text>
         </div>
         <div class="elements-space describe" style="flex-direction: column">
           <text class="describe">卤素</text>

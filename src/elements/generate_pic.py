@@ -6,7 +6,7 @@ def draw(symbol: str):
     # 创建一个Draw对象
     draw = ImageDraw.Draw(image)
 
-    font = ImageFont.truetype("/System/Library/Fonts/Supplemental/Arial.ttf",30)
+    font = ImageFont.truetype("/System/Library/Fonts/SFNSMono.ttf",30)
     text = symbol
 
 
@@ -16,7 +16,7 @@ def draw(symbol: str):
     # 绘制文本
     draw.text((20,20), text,font=font, fill=color, anchor="mm")
 
-    image.rotate(270).save('symbols/{}.png'.format(symbol))
+    image.rotate(90).save('symbols/{}.png'.format(symbol))
 
 symbols =  [
         "H",

@@ -100,7 +100,7 @@ export default {
         uri: "pages/intro/readme"
       })
     } else {
-      if (data != "v0.5.1-alpha") {
+      if (data != "v1.0.0-stable") {
         router.replace({
           uri: "pages/intro/update"
         })

@@ -1,14 +1,6 @@
+<import name="appbar" src="../../../components/appbar"></import>
 <template>
   <div class="page">
-    <div class="appBar-{{ device }}" style="">
-      <img
-        src="/common/back.png"
-        class="back-button"
-        @click="back"
-      />
-      <text>{{ symbol }}信息</text>
-      <div></div>
-    </div>
     <scroll class="content-{{ device }}" scroll-y="true" scroll-x="true">
       <div style="width: 100%; height: 10px"></div>
       <div style="padding-left: 10px; flex-direction: column; align-items: flex-start">
@@ -19,6 +11,7 @@
         <text class="title">英语名：{{ name_en }}</text>
       </div>
     </scroll>
+    <appbar title="{{symbol}}信息"></appbar>
   </div>
 </template>
 

@@ -1,0 +1,18 @@
+@use "base.scss";
+$devices: band9, band9p, band10;
+$devices-width: 192px, 336px, 212px;
+@mixin button{
+    height: 80px;
+    margin-top: 5px;
+    font-size: 25px;
+    color: base.$on-surface;
+    background-color: #1f1f1f;
+}
+
+@each $d in $devices{
+    $index: index($devices, $d);
+    .button-#{$d}{
+        @include button();
+        width: nth($devices-width, $index) * 0.95;
+    }
+}
