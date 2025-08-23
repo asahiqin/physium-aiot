@@ -1,8 +1,10 @@
-$primary: #D0BCFF;
-$on-primary: #381E72;
-$surface: #141218;
-$on-surface: #E6E0E9;
-$surface-container: #1d1b20;
+$primary: #0D6EFF;;
+$on-primary: #FFFFFF;
+$surface: #000000;
+$on-surface: #F2F4FC;
+$surface-container: #1F1F1F;
+$title: #2094FA;
+
 
 .title {
     font-size: 25px;
@@ -11,5 +13,11 @@ $surface-container: #1d1b20;
 }
 
 .back-button {
-    object-fit: cover; height: 50px; width: 50px
+    object-fit: cover; height: 40px; width: 40px;
+}
+
+.page{
+    width: 100%;
+    height: 100%;
+    background-color: $surface;
 }

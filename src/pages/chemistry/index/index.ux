@@ -1,14 +1,23 @@
+<import name="appbar" src="../../../components/appbar"></import>
 <template>
-  <div class="index-page">
+  <div class="page">
     <text
       if="{{ num_2.length == 0 }}"
       class="title"
-      style="font-size: 25px; margin-top: 10px; position: absolute; top: 250px; left: 10px;"
+      style="font-size: 25px; margin-top: 10px; position: absolute; top: 250px; left: 10px"
     >
       正在渲染中,请耐心等待
-    </text> 
+    </text>
     <div class="content-{{ device }}-{{ have_describe }}" else>
-      <scroll scroll-x="{{true}}" scroll-y="true" style="flex-direction:column">
+      <scroll scroll-x="{{ true }}" scroll-y="true" style="flex-direction: column">
+        <div class="elements-line">
+            <div style="width:50px;height:50px;flex-direction: column" @click="setting">
+              <image
+                src="../../../common/setting.png"
+                style="height: 30px; width: 30px; object-fit: cover"
+              />
+          </div>
+        </div>
         <!--第一周期-->
         <div class="elements-line">
           <div class="elements-space">
@@ -191,11 +200,14 @@
     <scroll class="index-{{ have_describe }}" scroll-x="true">
       <div class="divider"></div>
       <div class="elements-line">
-        <div class="elements-space" style="flex-direction: column" @click="setting">
-          <image
-            src="../../../common/setting.png"
-            style="height: 30px; width: 30px; object-fit: cover"
-          />
+        <div class="elements-space" style="flex-direction: column" @click="back">
+          <div class="actions-{{ screen_type }}" style="height: 54px; width: 54px">
+            <img
+              class="back-button"
+              src="/common/back.png"
+              style="height: 40px; width: 40px; margin-left: 2px"
+            />
+          </div>
         </div>
         <div for="{{ num_18 }}" tid="uniqueId">
           <div class="elements-space" style="flex-direction: column">
@@ -220,12 +232,6 @@
         <div class="elements-space describe" style="flex-direction: column"></div>
       </div>
     </scroll>
-    <div class="appBar {{ screen_type }}" style="width: 1026px">
-      <div style="height: 100%; width: 40px"></div>
-      <img src="/common/back.png" class="back-button" @click="back" />
-      <text>元素周期表</text>
-      <div></div>
-    </div>
   </div>
 </template>
 
@@ -344,6 +350,7 @@ export default {
 @use "../../../material/base.scss";
 @import "../../../material/divider.scss";
 @import "../../../material/base.scss";
+@import "../../../material/app_bar.scss";
 
 $alkali: #6c3b01;
 $alkaline: #846011;
@@ -357,33 +364,10 @@ $noble: #3a2151;
 $nocategory: #222;
 $devices: band9, band9p, band10;
 $device-height: 490px, 480px, 520px;
-.appBar {
-  display: flex;
-  align-items: center;
-  width: 1026px;
-  padding: 16px 16px 16px 16px;
-
-  background-color: base.$primary;
-  color: base.$on-primary;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  flex-direction: row;
-  height: 80px;
-}
-.index-page {
-  flex-direction: column;
-  background-color: #141218;
-}
 .elements-line {
   flex-direction: row;
 }
-#text {
-  color: #381e72;
-}
-.rotate{
+.rotate {
   transform: rotate(90deg);
   transform-origin: bottom right;
 }
@@ -468,18 +452,22 @@ $device-height: 490px, 480px, 520px;
 .index-true {
   flex-direction: column;
   position: absolute;
-  top: 80px;
+  padding-top: 10px;
+  padding-left: 10px;
+  top: 0px;
   left: 0;
   width: 1026px;
   height: 120px;
   background-color: base.$surface;
 }
 .index-false {
+  padding-top: 10px;
+  padding-left: 10px;
   flex-direction: column;
   width: 1026px;
   height: 70px;
   position: absolute;
-  top: 80px;
+  top: 0px;
   left: 0;
   background-color: base.$surface;
 }
@@ -488,19 +476,20 @@ $device-height: 490px, 480px, 520px;
   .content-#{$d}-true {
     flex-direction: column;
     position: absolute;
-
+    padding-left: 10px;
     width: 1026px;
-    top: 200px;
+    top: 120px;
     left: 0;
-    height: nth($device-height, $index) - 200px;
+    height: nth($device-height, $index) - 120px;
   }
   .content-#{$d}-false {
+    padding-left: 10px;
     flex-direction: column;
     width: 1026px;
     position: absolute;
-    top: 150px;
+    top: 70px;
     left: 0;
-    height: nth($device-height, $index) - 150px;
+    height: nth($device-height, $index) - 70px;
   }
 }
 </style>

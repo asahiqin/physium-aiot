@@ -1,0 +1,60 @@
+<template>
+  <div class="appBar-{{ device }}">
+    <div style="flex-direction: row; width: 100px; height: 75px;justify-content:center" @click="back">
+      <div class="actions-{{ screen_type }} {{ touch }}" style="justify-content:center;flex-direction: column;align-items: center" if="{{ !b }}">
+        <img class="back-button" src="/common/back.png" if="{{ !b }}" />
+      </div>
+    </div>
+    <div style="flex-direction: column">
+      <text class="appbar-time-{{ screen_type }}">{{ time }}</text>
+      <text class="appbar-title-{{ screen_type }}">{{ t }}</text>
+    </div>
+  </div>
+</template>
+
+<script>
+import router from "@system.router"
+export default {
+  props: ["canNotBack", "title"],
+  data: {
+    t: "",
+    b: true,
+    time: "",
+    device: "",
+    screen_type: "",
+    touch: ""
+  },
+
+  back() {
+    this.touch = "touch"
+    setTimeout(() => {
+      this.touch = ""
+      router.back()
+    }, 100)
+  },
+  onInit() {
+    this.device = this.$app.$def.device.device
+    this.screen_type = this.$app.$def.device.screen_type
+    this.t = this.title
+    this.b = this.canNotBack
+    console.log(this.b)
+    this.update_time()
+    setInterval(this.update_time, 10000)
+  },
+  update_time() {
+    const time = new Date()
+    this.time =
+      time.getHours().toString().padStart(2, "0") +
+      ":" +
+      time.getMinutes().toString().padStart(2, "0")
+  }
+}
+</script>
+
+<style lang="scss">
+@import "../material/app_bar.scss";
+@import "../material/base.scss";
+.touch {
+  background-color: #1f1f1f98;
+}
+</style>

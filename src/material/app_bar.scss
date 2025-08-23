@@ -1,15 +1,15 @@
 @use "base";
 $devices: band9, band9p, band10;
-$appbar-height: 120px, 80px, 120px;
+$appbar-height: 155px, 90px, 160px;
+$home-appbar-height: 100px, 90px, 100px;
 $device-height: 490px, 480px, 520px;
 @mixin appBar($device: band9) {
     display: flex;
     align-items: center;
     width: 100%;
     padding: 16px 16px 16px 16px;
-
-    background-color: base.$primary;
     color: base.$on-primary;
+    background-color: base.$surface;
 
     position: absolute;
     right: 0;
@@ -44,4 +44,75 @@ $device-height: 490px, 480px, 520px;
         flex-direction: column;
         height: nth($device-height, $index) - nth($appbar-height, $index);
     }
+    .appBar-#{$d}-home{
+        @include appBar($d);
+        flex-direction: column;
+        justify-content: flex-start;
+        height: nth($home-appbar-height, $index);
+    }
+    $index: index($devices, $d);
+    .content-#{$d}-home{
+        right: 0;
+        top: nth($home-appbar-height, $index);
+        width: 100%;
+        height: nth($device-height, $index) - nth($home-appbar-height, $index);
+    }
+}
+
+.appbar-home-title {
+    color: base.$title;
+    font-size: 40px;
+    width: 100%;
+    padding-left: 10px;
+    text-align: start;
+}
+@mixin appbar-title {
+    color: base.$title;
+    font-size: 28px;
+    width: 100%;
+    text-align: right;
+    margin-right: 5px;
+}
+.appbar-title-rect {
+    @include appbar-title()
+}
+
+.appbar-title-pill {
+    @include appbar-title();
+    text-align: center
+}
+
+@mixin appbar-time {
+    width: 100%;
+    text-align:right;
+    color: base.$on-surface;
+    font-size: 25px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.appbar-time-rect {
+    @include appbar-time()
+}
+.appbar-time-pill {
+    @include appbar-time();
+    text-align: center
+}
+@mixin actions{
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    background-color: base.$surface-container;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 3px;
+    object-fit: cover
+}
+.actions-rect{
+    @include actions();
+    width: 80px
+}
+.actions-pill {
+    @include actions();
+    width: 60px;
+    height: 60px;
 }

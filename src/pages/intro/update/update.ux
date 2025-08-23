@@ -1,5 +1,6 @@
+<import name="appbar" src="../../../components/appbar"></import>
 <template>
-  <div class="info-page">
+  <div class="page">
     <scroll scroll-y="true" class="content-{{ device }}">
       <div style="width: 100%; height: 10px"></div>
       <text class="title">v0.5.0-alpha</text>
@@ -11,10 +12,7 @@
       <text class="title">注：请在设置中更改以启用此项</text>
       <input type="button" class="button" value="完成" @click="finish"/>
     </scroll>
-    <div class="appBar-{{ device }}" style="">
-      <text>更新日志</text>
-      <div></div>
-    </div>
+    <appbar can-not-back="{{true}}" title="更新日志"></appbar>
   </div>
 </template>
 
@@ -70,11 +68,6 @@ export default {
 @import "../../../material/base.scss";
 @import "../../../material/app_bar.scss";
 @import "../../../material/card.scss";
-.info-page {
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: #141218;
-}
 .button {
   background-color: base.$primary;
   height: 60px;

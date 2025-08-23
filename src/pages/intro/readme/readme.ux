@@ -1,5 +1,6 @@
+<import name="appbar" src="../../../components/appbar"></import>
 <template>
-  <div class="info-page">
+  <div class="page">
     <scroll scroll-y="true" class="content-{{ device }}">
       <div style="width: 100%; height: 10px"></div>
       <text class="title">欢迎使用Physium(翻到底部是下一页)</text>
@@ -9,10 +10,7 @@
       <text class="title">3. 您也可以在详细信息中找到元素周期表设置</text>
       <input type="button" class="button" value="下一页" @click="change_router('/pages/intro/feedback')"/>
     </scroll>
-    <div class="appBar-{{ device }}" style="">
-      <text>介绍 1/2</text>
-      <div></div>
-    </div>
+    <appbar can-not-back="{{true}}" title="介绍 1/2" ></appbar>
   </div>
 </template>
 
@@ -53,11 +51,6 @@ export default {
 @import "../../../material/base.scss";
 @import "../../../material/app_bar.scss";
 @import "../../../material/card.scss";
-.info-page {
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: #141218;
-}
 .button {
   background-color: base.$primary;
   height: 60px;

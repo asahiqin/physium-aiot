@@ -1,33 +1,22 @@
+<import name="item" src="../../components/item"></import>
 <template>
-  <div class="home-page">
-    <scroll scroll-y="true" class="content-{{ device_type }}">
-      <div class="card">
-        <text class="card__title">元素周期表</text>
-        <text class="card__title">{{ loading }}</text>
-        <div class="card__actions">
-          <input type="button" class="button" value="进入" @click="gotoElementsTable" />
-        </div>
-      </div>
-      <div style="width: 100%; height: 10px"></div>
-      <div class="card">
-        <text class="card__title">物理常数表</text>
-        <text class="card__title"></text>
-        <div class="card__actions">
-          <input type="button" class="button" value="进入" @click="gotoPhysics" />
-        </div>
-      </div>
-      <div style="width: 100%; height: 10px"></div>
-      <div class="card">
-        <text class="card__title">计算相对分子质量</text>
-        <text class="card__title"></text>
-        <div class="card__actions">
-          <input type="button" class="button" value="进入" @click="gotoGetCompound" />
-        </div>
-      </div>
+  <div class="page">
+    <scroll scroll-y="true" class="content-{{ device_type }}" onscroll="change_appbar">
+      <text class="appbar-home-title">Physium</text>
+      <item value="元素周期表" @touch="gotoElementsTable"></item>
+      <item value="物理常数表" @touch="gotoPhysics"></item>
+      <item value="计算相对分子质量" @touch="gotoGetCompound"></item>
+      <item value="关于" @touch="gotoInfoPage"></item>
+      <div style="width: 100%; height: 20px"></div>
     </scroll>
     <div class="appBar-{{ device_type }}">
-      <text>Physium</text>
-      <img class="more_button" src="/common/more_horiz.png" @click="gotoInfoPage" />
+      <div></div>
+      <div style="flex-direction: column">
+        <text class="appbar-time-{{ screen_type }}">{{ time }}</text>
+        <text class="appbar-title-{{ screen_type }} dynamic-title" style="opacity: {{ opacity }}">
+          Physium
+        </text>
+      </div>
     </div>
   </div>
 </template>
@@ -40,12 +29,16 @@ export default {
     loading: "",
     elements_button: true,
     width: "",
-    device_type: ""
+    device_type: "",
+    time: "",
+    screen_type: "",
+    opacity: 0
   },
   onShow() {
     this.loading = ""
     this.elements_button = true
     var rotate = ""
+    this.update_time()
     storage.get({
       key: "rotate",
       default: "off",
@@ -69,7 +62,7 @@ export default {
       }
     })
   },
-  handle_rotate(data){
+  handle_rotate(data) {
     var value = true
     if (data == "off") {
       value = false
@@ -86,8 +79,19 @@ export default {
   },
   onInit() {
     var first_use = ""
+
+    this.screen_type = this.$app.$def.device.screen_type
     this.device_type = this.$app.$def.device.device
+    this.update_time()
     console.log(this.$app.$def.device.device)
+    setInterval(this.update_time, 10000)
+  },
+  update_time() {
+    const time = new Date()
+    this.time =
+      time.getHours().toString().padStart(2, "0") +
+      ":" +
+      time.getMinutes().toString().padStart(2, "0")
   },
   handle_version(data) {
     console.log(data)
@@ -135,6 +139,13 @@ export default {
     router.push({
       uri: "pages/chemistry/get_compound"
     })
+  },
+  change_appbar(e) {
+    if (e.scrollY <= 40) {
+      this.opacity = 0
+    } else {
+      this.opacity = 1
+    }
   }
 }
 </script>
@@ -144,16 +155,12 @@ export default {
 @use "../../material/app_bar.scss";
 @use "../../material/divider.scss";
 @use "../../material/card.scss";
-.home-page {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-
-  background-color: #141218;
-}
-.more_button {
+.icon {
   object-fit: contain;
   height: 50px;
   width: 50px;
+}
+.dynamic-title {
+  transition: opacity ease-in-out 200ms;
 }
 </style>

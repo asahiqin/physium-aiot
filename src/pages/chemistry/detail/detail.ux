@@ -1,5 +1,5 @@
 <template>
-  <div class="detail-page">
+  <div class="page">
     <div class="appBar-{{ device }}" style="">
       <img
         src="/common/back.png"
@@ -61,17 +61,4 @@ export default {
 @import "../../../material/divider.scss";
 @import "../../../material/base.scss";
 @import "../../../material/app_bar.scss";
-.detail-page {
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: #141218;
-}
-
-.info {
-  position: absolute;
-  bottom: 30px;
-  right: 10px;
-  color: #ccc2dc;
-  font-size: 18px;
-}
 </style>

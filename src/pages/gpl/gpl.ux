@@ -1,5 +1,6 @@
+<import name="appbar" src="../../components/appbar"></import>
 <template>
-  <div class="gpl-page">
+  <div class="page">
     <scroll scroll-y="true" class="content-{{ device }}">
       <qrcode
         value="https://ww.gnu.org/licenses/old-licenses/gpl-2.0.html"
@@ -7,15 +8,7 @@
       ></qrcode>
       <text class="title">扫码查看</text>
     </scroll>
-    <div class="appBar-{{ device }}" style="">
-      <img
-        src="/common/back.png"
-        class="back-button"
-        @click="back"
-      />
-      <text>GPL License</text>
-      <div></div>
-    </div>
+    <appbar title="GPL"></appbar>
   </div>
 </template>
 
@@ -40,9 +33,4 @@ export default {
 @import "../../material/divider.scss";
 @import "../../material/base.scss";
 @import "../../material/app_bar.scss";
-.gpl-page {
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: #141218;
-}
 </style>

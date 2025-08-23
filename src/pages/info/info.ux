@@ -1,25 +1,19 @@
+<import name="item" src="../../components/item"></import>
+<import name="appbar" src="../../components/appbar"></import>
 <template>
-  <div class="info-page">
+  <div class="page">
     <scroll scroll-y="true" class="content-{{ device }}">
       <div style="width: 100%; height: 10px"></div>
-      <div class="card">
-        <text class="card__title" @click="change_router('/pages/chemistry/setting')">
-          元素周期表设置
-        </text>
-      </div>
-      <div class="card">
-        <text class="card__title" @click="reset_setting">重制所有设置</text>
-      </div>
-      <div class="card">
-        <text class="card__title" @click="feedback">反馈</text>
-      </div>
+      <item value="元素周期表设置" @touch="change_router('/pages/chemistry/setting')"></item>
+      <item value="重制所有设置" @touch="reset_setting"></item>
+      <item value="反馈" @touch="feedback"></item>
       <div class="divider"></div>
       <div class="card">
         <text class="card__title">开发者:AsahiQin</text>
         <text class="card__title">协助测试:equalD</text>
       </div>
       <div class="card">
-        <text class="card__title">版本v0.5.1-alpha</text>
+        <text class="card__title">版本v1.0.0-stable</text>
         <text class="card__title">该项目基于GPL v2.0开源</text>
         <text class="card__title">branch: {{ branch }}</text>
         <text class="card__title">last commit: {{ last_commit }}</text>
@@ -42,16 +36,12 @@
         <text class="card__title">MIT License</text>
       </div>
       <div class="divider"></div>
-      <div class="card" @click="gotoGPL">
+      <div class="list_item" @click="gotoGPL">
         <text class="card__title">查看GPL v2.0 英文副本</text>
       </div>
       <div style="width: 100%; height: 40px"></div>
     </scroll>
-    <div class="appBar-{{ device }}" style="">
-      <img src="/common/back.png" class="back-button" @click="back" />
-      <text>更多信息</text>
-      <div></div>
-    </div>
+    <appbar title="更多信息"></appbar>
   </div>
 </template>
 

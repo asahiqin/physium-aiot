@@ -1,6 +1,7 @@
+<import name="appbar" src="../../../components/appbar"></import>
 <import name="input-method" src="../../../InputMethod/InputMethod.ux"></import>
 <template>
-  <div class="info-page">
+  <div class="page">
     <scroll scroll-y="true" class="content-{{ device }}">
       <div style="width: 100%; height: 10px"></div>
       <div class="card" @click="changeState">
@@ -27,15 +28,7 @@
       @delete="onDelete"
       @complete="onComplete"
     ></input-method>
-    <div class="appBar-{{ device }}" style="">
-      <img
-        src="/common/back.png"
-        class="back-button"
-        @click="back"
-      />
-      <text>计算</text>
-      <div></div>
-    </div>
+    <appbar title="计算"></appbar>
   </div>
 </template>
 
@@ -101,9 +94,4 @@ export default {
 @import "../../../material/base.scss";
 @import "../../../material/app_bar.scss";
 @import "../../../material/card.scss";
-.info-page {
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: #141218;
-}
 </style>

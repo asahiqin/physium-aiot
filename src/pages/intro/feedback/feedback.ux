@@ -1,21 +1,21 @@
+<import name="appbar" src="../../../components/appbar"></import>
 <template>
-  <div class="info-page">
+  <div class="page">
     <scroll scroll-y="true" class="content-{{ device }}">
       <qrcode value="https://www.bandbbs.cn/resources/3762/" if="{{ device == 'band9p' }}"></qrcode>
       <qrcode value="https://www.bandbbs.cn/resources/3813/" if="{{ device == 'band9' }}"></qrcode>
       <text class="title">本项目仍在快速开发阶段,如有bug或新的想法,欢迎在评论区反馈</text>
-      <div style="height: 50px;width:100%"></div>
-      <input type="button" class="button" value="下一页" @click="change_router('/pages/intro/update')" if="{{hide_appbar == 'true'}}"/>
+      <div style="height: 50px; width: 100%"></div>
+      <input
+        type="button"
+        class="button"
+        value="下一页"
+        @click="change_router('/pages/intro/update')"
+        if="{{ hide_appbar == 'true' }}"
+      />
     </scroll>
-    <div class="appBar-{{ device }}" style="" if="{{hide_appbar == 'true'}}">
-      <text>反馈 2/2</text>
-      <div></div>
-    </div>
-    <div class="appBar-{{ device }}" style="" else>
-        <img src="/common/back.png" class="back-button" @click="back" />
-        <text>反馈</text>
-        <div></div>
-      </div>
+    <appbar title="反馈 2/2" can-not-back="{{ true }}" if="{{ hide_appbar == 'true' }}"></appbar>
+    <appbar title="反馈" else></appbar>
   </div>
 </template>
 
@@ -30,10 +30,10 @@ export default {
     device: "",
     branch: git_info.branch,
     last_commit: git_info.last_commit,
-    hide_appbar: 'true'
+    hide_appbar: "true"
   },
-  protected:{
-    intro: 'true'
+  protected: {
+    intro: "true"
   },
   back() {
     router.back()
@@ -62,11 +62,6 @@ export default {
 @import "../../../material/base.scss";
 @import "../../../material/app_bar.scss";
 @import "../../../material/card.scss";
-.info-page {
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: #141218;
-}
 .button {
   background-color: base.$primary;
   height: 60px;
@@ -81,7 +76,10 @@ export default {
     0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 qrcode {
-    color: #141218; background-color: #e6e0e9; margin: 10px 10px 10px 10px;
-    height: 150px;width: 150px;
+  color: #141218;
+  background-color: #e6e0e9;
+  margin: 10px 10px 10px 10px;
+  height: 150px;
+  width: 150px;
 }
 </style>

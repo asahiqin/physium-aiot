@@ -1,3 +1,4 @@
+<import name="appbar" src="../../../components/appbar"></import>
 <template>
   <div class="page">
     <scroll scroll-y="true" class="content-{{ device }}" scroll-x="true">
@@ -66,11 +67,7 @@
       </div>
       <div style="width: 100%; height: 40px"></div>
     </scroll>
-    <div class="appBar-{{ device }}" style="">
-      <img src="/common/back.png" class="back-button" @click="back" />
-      <text>元素周期表设置</text>
-      <div></div>
-    </div>
+    <appbar title="元素周期表设置"></appbar>
   </div>
 </template>
 
@@ -181,11 +178,6 @@ export default {
 $elements: alkali, alkaline, lanthanoid, actinoid, transition, poor, metalloid, nonmetal, noble,
   nocategory;
 $colors: #6c3b01, #846011, #402c17, #732e4c, #711019, #003666, #015146, #3e6418, #3a2151, #222;
-.page {
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: #141218;
-}
 
 .notice-rect {
   width: 320px;

@@ -1,7 +1,7 @@
 {
   "package": "io.github.asahiqin.physium",
   "name": "physium",
-  "versionName": "v0.5.1-alpha",
+  "versionName": "v1.0.0-stable",
   "versionCode": 5,
   "minPlatformVersion": 1000,
   "minAPILevel": 2,

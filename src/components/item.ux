@@ -1,0 +1,56 @@
+<template>
+  <div
+    class="list_item transtion {{ status }}"
+    @click="click"
+    @touchstart="touch_start"
+    @touchend="touch_end"
+  >
+    <text class="card__title" @touchstart="touch_start" @touchend="touch_end" @touchmove="touch_end">{{ v }}</text>
+  </div>
+</template>
+
+<script>
+import router from "@system.router"
+export default {
+  props: ["value"],
+  data: {
+    v: "",
+    status: ""
+  },
+  back() {
+    router.back()
+  },
+  onInit() {
+    this.v = this.value
+  },
+  click(e) {
+    this.status = "touch"
+    setTimeout(() => {
+      this.status = ""
+      console.log("touch")
+      this.$emit("touch")
+    }, 100)
+  },
+  onclick() {
+    this.status = ""
+    console.log("touch")
+    this.$emit("touch")
+  },
+  touch_start() {
+    console.log("start")
+    this.status = "touch"
+  },
+  touch_end() {
+    console.log("end")
+    this.status = ""
+  }
+}
+</script>
+
+<style lang="scss">
+@import "../material/card.scss";
+@import "../material/base.scss";
+.touch {
+  background-color: #1f1f1f96;
+}
+</style>
