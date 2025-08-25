@@ -67,7 +67,7 @@
       </div>
       <div style="width: 100%; height: 40px"></div>
     </scroll>
-    <appbar title="元素周期表设置"></appbar>
+    <appbar title="设置"></appbar>
   </div>
 </template>
 
